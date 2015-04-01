@@ -1,16 +1,17 @@
-var gulp        = require('gulp'),
-    plumber     = require('gulp-plumber'),
-    jade        = require('gulp-jade'),
-    connect     = require('gulp-connect'),
-    stylus      = require('gulp-stylus'),
-    jeet        = require('jeet'),
-    stylFiles   = ['assets/styles/*.styl']
-    jadeFiles   = ['src/views/*.jade'],
-    publicFiles = ['public/**/*'];
+var gulp         = require('gulp'),
+    plumber      = require('gulp-plumber'),
+    jade         = require('gulp-jade'),
+    connect      = require('gulp-connect'),
+    stylus       = require('gulp-stylus'),
+    jeet         = require('jeet'),
+    STYL_FILES   = ['assets/styles/*.styl']
+    JS_FILES     = ['assets/js/*.js'],
+    JADE_FILES   = ['src/views/*.jade'],
+    PUBLIC_FILES = ['public/**/*'];
 
 
 gulp.task('views', function () {
-    gulp.src(jadeFiles)
+    gulp.src(JADE_FILES)
         .pipe(plumber())
         .pipe(jade())
         .pipe(gulp.dest('public'));
@@ -25,10 +26,17 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('public/css'));
 });
 
+gulp.task('js', function () {
+    gulp.src('assets/js/application.js')
+        .pipe(plumber())
+        .pipe(gulp.dest('public/js'));
+});
+
 gulp.task('watch', function () {
-    gulp.watch(jadeFiles, ['views']);
-    gulp.watch(publicFiles, ['reload']);
-    gulp.watch(stylFiles, ['styles']);
+    gulp.watch(JADE_FILES, ['views']);
+    gulp.watch(PUBLIC_FILES, ['reload']);
+    gulp.watch(STYL_FILES, ['styles']);
+    gulp.watch(JS_FILES, ['js']);
 });
 
 gulp.task('connect', function () {
@@ -39,9 +47,9 @@ gulp.task('connect', function () {
 });
 
 gulp.task('reload', function () {
-    gulp.src(publicFiles)
+    gulp.src(PUBLIC_FILES)
         .pipe(connect.reload());
 });
 
-gulp.task('build', ['views', 'styles']);
+gulp.task('build', ['views', 'styles', 'js']);
 gulp.task('default', ['build', 'watch', 'connect']);
