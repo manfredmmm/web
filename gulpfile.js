@@ -1,11 +1,11 @@
-var gulp = require('gulp'),
-    plumber = require('gulp-plumber'),
-    jade = require('gulp-jade'),
-    connect = require('gulp-connect'),
-    stylus = require('gulp-stylus'),
-    jeet         = require('jeet'),
-    stylFiles = ['assets/styles/*.styl']
-    jadeFiles = ['src/views/*.jade'],
+var gulp        = require('gulp'),
+    plumber     = require('gulp-plumber'),
+    jade        = require('gulp-jade'),
+    connect     = require('gulp-connect'),
+    stylus      = require('gulp-stylus'),
+    jeet        = require('jeet'),
+    stylFiles   = ['assets/styles/*.styl']
+    jadeFiles   = ['src/views/*.jade'],
     publicFiles = ['public/**/*'];
 
 
