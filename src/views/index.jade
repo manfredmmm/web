@@ -2,35 +2,38 @@ doctype html
 html
   head
     title manfredmmm
-    link(rel="stylesheet" href="/css/application.css")
     link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
-    link(rel="shortcut icon" type="image/png" href="/images/mmm-favicon2.png")
+    link(rel="stylesheet" href="/css/application.css")
+    link(rel="javascript" href="/js/application.js")
+    link(rel="shortcut icon" type="image/png" href="/images/mmm-favicon.png")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
-    a.home
+    a.home.z-index10(href="http://localhost:8080")
     section.content.front
-      .container
-        h1.u-centered www developer
-    section.content.me
-      .container
-        h2.u-centered me
-    section.content.cat
-      .container
-        h2.u-centered cat
-    section.content.car
-      .container
-        h2.u-centered car
-    section.content.dino
-      .container
-        h2.u-centered dinosaurs
-    section.content.kelly
-      .container
-        h2.u-centered kelly
-    section.content.montserrat
-      .container
-        h2.u-centered montserrateta
-    section.content.contact
+      img.z-index8(src="images/mmm.svg")
+      h1.z-index8.u-centered www developer
+      video.z-index1(autoplay="" preload="auto" loop="")
+        source(src="/videos/mmm.mp4" type="video/mp4")
+    //section.content.me
+    //  .container
+    //    h2.u-centered me
+    //section.content.cat
+    //  .container
+    //    h2.u-centered cat
+    //section.content.car
+    //  .container
+    //    h2.u-centered car
+    //section.content.dino
+    //  .container
+    //    h2.u-centered dinosaurs
+    //section.content.kelly
+    //  .container
+    //    h2.u-centered kelly
+    //section.content.montserrat
+    //  .container
+    //    h2.u-centered montserrateta
+    //section.content.contact
       .container
         ul.social
           li
@@ -42,4 +45,5 @@ html
           li
             a(href="https://github.com/manfredmmm" target="_blank")
               i.fa.fa-github
+    script(language="javascript" type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js")
     script(language="javascript" type="text/javascript" src="js/application.js")
