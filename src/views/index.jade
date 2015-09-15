@@ -4,14 +4,13 @@ html
     title manfredmmm
     link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
     link(rel="stylesheet" href="/css/application.css")
-    link(rel="javascript" href="/js/application.js")
     link(rel="shortcut icon" type="image/png" href="/images/icons/mmm-favicon.png")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
     a.home.z-index10(href="http://localhost:8080")
     section.content.front
-      img.z-index2(src="/images/icons/mmm.svg")
+      img#mmm-svg.z-index2(src="/images/icons/mmm.svg")
       h1.z-index2.u-centered www developer
       video.z-index1(autoplay="" preload="auto" loop="")
         source(src="/videos/mmm.mp4" type="video/mp4")
@@ -45,5 +44,5 @@ html
           li
             a(href="https://github.com/manfredmmm" target="_blank")
               i.fa.fa-github
-    script(language="javascript" type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js")
-    script(language="javascript" type="text/javascript" src="js/application.js")
+    //script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+    script(src="/js/application.js")

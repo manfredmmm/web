@@ -1,7 +1,5 @@
 (function () {
     "use strict";
 
-    var sectionHeight = $('section.front').height();
-    console.log(sectionHeight);
-    $('section.front video').css('height', sectionHeight);
-});
+    new Vivus('mmm-svg', { type: 'delayed', duration: 200 }, myCallback);
+})();
