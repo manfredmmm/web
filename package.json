@@ -18,6 +18,7 @@
   "homepage": "https://github.com/manfredmmm/web",
   "devDependencies": {
     "gulp": "^3.8.11",
+    "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.2.0",
     "gulp-jade": "^1.0.0",
     "gulp-plumber": "^0.6.6",

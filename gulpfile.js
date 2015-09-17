@@ -3,6 +3,7 @@ var gulp         = require('gulp'),
     jade         = require('gulp-jade'),
     connect      = require('gulp-connect'),
     stylus       = require('gulp-stylus'),
+    concat       = require('gulp-concat'),
     jeet         = require('jeet'),
     STYL_FILES   = ['assets/styles/*.styl']
     JS_FILES     = ['assets/js/*.js'],
@@ -32,6 +33,15 @@ gulp.task('js', function () {
         .pipe(gulp.dest('public/js'));
 });
 
+gulp.task('scripts', function() {
+    return gulp.src([
+        'node_modules/vivus/dist/vivus.min.js'
+    ])
+    .pipe(plumber())
+    .pipe(concat('application.js'))
+    .pipe(gulp.dest('public/js'));
+});
+
 gulp.task('watch', function () {
     gulp.watch(JADE_FILES, ['views']);
     gulp.watch(PUBLIC_FILES, ['reload']);
@@ -51,5 +61,5 @@ gulp.task('reload', function () {
         .pipe(connect.reload());
 });
 
-gulp.task('build', ['views', 'styles', 'js']);
+gulp.task('build', ['views', 'styles', 'js', 'scripts']);
 gulp.task('default', ['build', 'watch', 'connect']);
