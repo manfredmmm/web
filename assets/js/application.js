@@ -1,5 +1,6 @@
 (function () {
     "use strict";
 
-    new Vivus('mmm-svg', { type: 'delayed', duration: 200 }, myCallback);
+    new Vivus('draw_M', { type: 'delayed', duration: 125 });
+
 })();

@@ -27,15 +27,10 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('js', function () {
-    gulp.src('assets/js/application.js')
-        .pipe(plumber())
-        .pipe(gulp.dest('public/js'));
-});
-
-gulp.task('scripts', function() {
+gulp.task('js', function() {
     return gulp.src([
-        'node_modules/vivus/dist/vivus.min.js'
+        'node_modules/vivus/dist/vivus.js',
+        'assets/js/application.js'
     ])
     .pipe(plumber())
     .pipe(concat('application.js'))
@@ -61,5 +56,5 @@ gulp.task('reload', function () {
         .pipe(connect.reload());
 });
 
-gulp.task('build', ['views', 'styles', 'js', 'scripts']);
+gulp.task('build', ['views', 'styles', 'js']);
 gulp.task('default', ['build', 'watch', 'connect']);
