@@ -1,0 +1,28 @@
+vendors = official
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+// Fade In Up // --------------------------
+@keyframes fadeInUp {
+  0% {
+    opacitu: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+// Generic animation mixin // -------------
+animation(animation, duration = .5s, delay = 0s, iteration = 1, function = ease-in)
+  animation-name animation
+  animation-duration duration
+  animation-delay delay
+  animation-iteration-count iteration
+  animation-timing-function function
+  animation-fill-mode both
