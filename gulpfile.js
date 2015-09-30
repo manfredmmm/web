@@ -6,7 +6,7 @@ var gulp         = require('gulp'),
     concat       = require('gulp-concat'),
     jeet         = require('jeet'),
     STYL_FILES   = ['assets/styles/*.styl']
-    JS_FILES     = ['assets/js/*.js'],
+    JS_FILES     = ['assets/js/**/*.js'],
     JADE_FILES   = ['src/views/*.jade'],
     PUBLIC_FILES = ['public/**/*'];
 
@@ -27,9 +27,12 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('js', function() {
+gulp.task('js', function () {
     return gulp.src([
+        'node_modules/angular/angular.js',
         'node_modules/vivus/dist/vivus.js',
+        'node_modules/jquery/dist/jquery.js',
+        'assets/js/manfred/app.js',
         'assets/js/application.js'
     ])
     .pipe(plumber())
