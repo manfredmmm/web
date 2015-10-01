@@ -39023,6 +39023,16 @@ return jQuery;
               name: 'front'
             }, {
               name: 'me'
+            }, {
+              name: 'cat'
+            }, {
+              name: 'car'
+            }, {
+              name: 'dinosaurs'
+            }, {
+              name: 'kelly'
+            }, {
+              name: 'contact'
         }];
 
         $scope.isCurrentPage = function (page) {
@@ -39031,12 +39041,14 @@ return jQuery;
 
         $scope.next = function () {
             $scope.currentPage += 1;
-            console.log('next');
         };
 
         $scope.previous = function () {
             $scope.currentPage -= 1;
-            console.log('prev');
+        };
+
+        $scope.goTo = function (pageNum) {
+            $scope.currentPage = pageNum;
         };
     });
 
@@ -39045,6 +39057,8 @@ return jQuery;
 (function () {
     "use strict";
 
-    new Vivus('draw_M', { type: 'delayed', duration: 125 });
+    new Vivus('draw_M', { type: 'delayed', duration: 125 }, function () {
+        $('svg#draw_M path').css('fill', '#ffffff');
+    });
 
 })();

@@ -9,6 +9,16 @@
               name: 'front'
             }, {
               name: 'me'
+            }, {
+              name: 'cat'
+            }, {
+              name: 'car'
+            }, {
+              name: 'dinosaurs'
+            }, {
+              name: 'kelly'
+            }, {
+              name: 'contact'
         }];
 
         $scope.isCurrentPage = function (page) {
@@ -17,12 +27,14 @@
 
         $scope.next = function () {
             $scope.currentPage += 1;
-            console.log('next');
         };
 
         $scope.previous = function () {
             $scope.currentPage -= 1;
-            console.log('prev');
+        };
+
+        $scope.goTo = function (pageNum) {
+            $scope.currentPage = pageNum;
         };
     });
 
