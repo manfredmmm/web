@@ -5,11 +5,11 @@ var gulp         = require('gulp'),
     stylus       = require('gulp-stylus'),
     concat       = require('gulp-concat'),
     jeet         = require('jeet'),
-    STYL_FILES   = ['assets/styles/*.styl']
+    autoprefixer = require('autoprefixer-stylus'),
+    STYL_FILES   = ['assets/styles/*.styl'],
     JS_FILES     = ['assets/js/**/*.js'],
     JADE_FILES   = ['src/views/*.jade'],
     PUBLIC_FILES = ['public/**/*'];
-
 
 gulp.task('views', function () {
     gulp.src(JADE_FILES)
@@ -22,7 +22,10 @@ gulp.task('styles', function () {
     gulp.src('assets/styles/application.styl')
         .pipe(plumber())
         .pipe(stylus({
-        use: [jeet()]
+            use: [
+                  jeet(),
+                  autoprefixer()
+                ]
         }))
         .pipe(gulp.dest('public/css'));
 });
