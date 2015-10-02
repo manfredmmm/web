@@ -1,7 +1,7 @@
 doctype html
 html
   include head
-  body(ng-app="mApp" ng-controller="sectionsController")
+  body(ng-app="mApp" ng-strict-di ng-controller="sectionsController")
     a.home.z-index10(href="http://localhost:8080")
     include sidebar
     a.nav.previous.z-index10(ng-click="previous()" href ng-hide="isCurrentPage('front')")

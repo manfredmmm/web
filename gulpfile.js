@@ -23,7 +23,7 @@ gulp.task('styles', function () {
     gulp.src('assets/styles/application.styl')
         .pipe(plumber())
         .pipe(stylus({
-            compress: true,
+            //compress: true,
             use: [
                   jeet(),
                   autoprefixer()

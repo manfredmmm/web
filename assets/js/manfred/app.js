@@ -3,7 +3,7 @@
 
     var app = angular.module('mApp', []);
 
-    app.controller('sectionsController', function ($scope) {
+    app.controller('sectionsController', ['$scope', function ($scope) {
         $scope.currentPage = 0;
         $scope.pages = [{
               name: 'front'
@@ -36,13 +36,13 @@
         $scope.goTo = function (pageNum) {
             $scope.currentPage = pageNum;
         };
-    });
+    }]);
 
-    app.controller('sidebarController', function ($scope) {
+    app.controller('sidebarController', ['$scope', function ($scope) {
         $scope.sidebarActive = false;
 
         $scope.toggleSidebar = function () {
             $scope.sidebarActive = !$scope.sidebarActive;
         };
-    });
+    }]);
 })();
