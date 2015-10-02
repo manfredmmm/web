@@ -1,0 +1,9 @@
+.sidebar(ng-controller="sidebarController")
+  a.menu.z-index10(ng-click="toggleSidebar()" ng-show="!sidebarActive" href)
+    img(ng-src="/images/icons/burger.svg")
+  a.close.z-index10(ng-click="toggleSidebar()" ng-show="sidebarActive" href)
+    img(ng-src="/images/icons/close.svg")
+  nav.z-index10(ng-show="sidebarActive")
+    ul.nav
+      li(ng-repeat="page in pages")
+        a(ng-click="goTo($index)" ng-class="{ active: isCurrentPage(page.name) }" href) {{ page.name }}

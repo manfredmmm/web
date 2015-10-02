@@ -4,6 +4,7 @@ var gulp         = require('gulp'),
     connect      = require('gulp-connect'),
     stylus       = require('gulp-stylus'),
     concat       = require('gulp-concat'),
+    uglify       = require('gulp-uglify'),
     jeet         = require('jeet'),
     autoprefixer = require('autoprefixer-stylus'),
     STYL_FILES   = ['assets/styles/*.styl'],
@@ -22,6 +23,7 @@ gulp.task('styles', function () {
     gulp.src('assets/styles/application.styl')
         .pipe(plumber())
         .pipe(stylus({
+            compress: true,
             use: [
                   jeet(),
                   autoprefixer()
@@ -40,6 +42,7 @@ gulp.task('js', function () {
     ])
     .pipe(plumber())
     .pipe(concat('application.js'))
+    //.pipe(uglify())
     .pipe(gulp.dest('public/js'));
 });
 

@@ -39052,6 +39052,13 @@ return jQuery;
         };
     });
 
+    app.controller('sidebarController', function ($scope) {
+        $scope.sidebarActive = false;
+
+        $scope.toggleSidebar = function () {
+            $scope.sidebarActive = !$scope.sidebarActive;
+        };
+    });
 })();
 
 (function () {
