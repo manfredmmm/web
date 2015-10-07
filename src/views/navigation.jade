@@ -1,3 +1,4 @@
+a.home.z-index10(href="http://localhost:8080")
 .menu.z-index10(ng-controller="sidebarController")
   a.burger.z-index10(ng-click="toggleSidebar()" ng-show="!sidebarActive" href)
     img(ng-src="/images/icons/burger.svg")
@@ -7,4 +8,8 @@
     nav
       ul.nav
         li.active(ng-repeat="page in pages")
-          a(ng-click="goTo($index)" ng-class="{ active: isCurrentPage(page.name) }" href) {{ page.name }}
+          a(ng-click="goTo($index)" ng-class="{ active: isCurrentPage(page.name) }" href) 
+            span.binary {{ page.binary }}
+            span - {{ page.name }}
+a.nav.previous.z-index10(ng-click="previous()" href ng-hide="isCurrentPage('home')")
+a.nav.next.z-index10(ng-click="next()" href ng-hide="isCurrentPage('social')")

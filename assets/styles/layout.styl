@@ -43,18 +43,17 @@ a.previous
   background-position bottom
 .sidebar
   position absolute
-  width 30%
+  width 100%
   height 100%
-  right -400px
-  top 0
-  background-color rgba(white, .95)
-  transition-duration .5s
-  set-font-size(24px)
+  top -1600px
+  background-color rgba(white)
+  transition-duration .4s
+  set-font-size(28px)
   display flex
   align-items center
   justify-content center
   &.active
-    right 0
+    top 0
   a
     color my-grey
     text-decoration none
@@ -66,6 +65,9 @@ a.previous
   li
     transition-duration .4s
     margin-bottom: 5px
+  span.binary
+    width 58px
+    display inline-block
 a.burger,
 a.close
   background-size 100%

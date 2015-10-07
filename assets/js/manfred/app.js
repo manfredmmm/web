@@ -6,19 +6,23 @@
     app.controller('sectionsController', ['$scope', function ($scope) {
         $scope.currentPage = 0;
         $scope.pages = [{
-              name: 'front'
+              binary: '000',
+              name: 'home'
             }, {
+              binary: '001',
               name: 'me'
             }, {
-              name: 'cat'
+              binary: '010',
+              name: 'likes'
             }, {
-              name: 'car'
+              binary: '011',
+              name: 'can I do?'
             }, {
-              name: 'dinosaurs'
-            }, {
-              name: 'kelly'
-            }, {
+              binary: '100',
               name: 'contact'
+            }, {
+              binary: '101',
+              name: 'social'
         }];
 
         $scope.isCurrentPage = function (page) {
