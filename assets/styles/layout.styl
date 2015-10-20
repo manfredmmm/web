@@ -7,14 +7,6 @@ html
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   background-color m-white
-.content
-  display table
-  width 100%
-  height 100%
-.container
-  display table-cell
-  text-align center
-  vertical-align middle
 a.home
   &.white
     background-image url('/images/icons/mmm-triangles-white.svg')
@@ -31,19 +23,24 @@ a.home
   display block
   animation fadeIn
 a.nav
-  width 50px
-  height 40px
+  width 40px
+  height 50px
   position fixed
-  left calc(50% - 25px)
+  top calc(50% - 25px)
+  background-repeat no-repeat
+  background-size 100%
 a.next
-  bottom 0
-  background-image url('/images/icons/down.svg')
-  background-repeat no-repeat
+  right 0
+  &.black
+    background-image url('/images/icons/right-black.svg')
+  &.white
+    background-image url('/images/icons/right-white.svg')
 a.previous
-  top 0
-  background-image url('/images/icons/up.svg')
-  background-repeat no-repeat
-  background-position bottom
+  left 0
+  &.black
+    background-image url('/images/icons/left-black.svg')
+  &.white
+    background-image url('/images/icons/left-white.svg')
 .sidebar
   position absolute
   width 100%
@@ -61,10 +58,12 @@ a.previous
     color m-grey
     text-decoration none
     display block
+    border-bottom 1px solid transparent
+    transition-duration .2s
   a:hover
     color darken(m-grey, 25%)
   a.active
-    border-bottom 1px solid light-grey
+    border-bottom 1px solid m-grey
   li
     transition-duration .4s
     margin-bottom: 5px
