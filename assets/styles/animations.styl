@@ -19,6 +19,17 @@ vendors = official
     transform: translateY(0);
   }
 }
+// Fade In Right // --------------------------
+@keyframes fadeInRight {
+  0% {
+    opacitu: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 // Generic animation mixin // -------------
 animation(animation, duration = .5s, delay = 0s, iteration = 1, function = ease-in)
   animation-name animation

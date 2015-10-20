@@ -39053,22 +39053,24 @@ return jQuery;
         $scope.currentPage = 0;
         $scope.pages = [{
               binary: '000',
-              name: 'home'
+              name: 'home',
+              title: 'home'
             }, {
               binary: '001',
-              name: 'me'
+              name: 'me',
+              title: 'bio'
             }, {
               binary: '010',
-              name: 'likes'
+              name: 'can',
+              title: 'what can I do?'
             }, {
               binary: '011',
-              name: 'can I do?'
+              name: 'contact',
+              title: 'contact'
             }, {
               binary: '100',
-              name: 'contact'
-            }, {
-              binary: '101',
-              name: 'social'
+              name: 'social',
+              title: 'social'
         }];
 
         $scope.isCurrentPage = function (page) {

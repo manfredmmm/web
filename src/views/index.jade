@@ -3,7 +3,7 @@ html
   include head
   body(ng-app="mApp" ng-strict-di ng-controller="sectionsController")
     include navigation
-    section.content.front(ng-show="isCurrentPage('home')")
+    section.content.home(ng-show="isCurrentPage('home')")
       svg(id="home-icon" class="z-index2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 200 615 365" enable-background="new 0 200 615 365" preserveAspectRatio="xMinYMin meet")
         path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M2,559.5c202.897-349.059,0,0,202.897-349.059")
         path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M205,210.5c202.592,349.516,0,0,202.592,349.516")
@@ -21,17 +21,15 @@ html
         source(src="/videos/mmm.mp4" type="video/mp4")
     section.content.me(ng-show="isCurrentPage('me')")
       .container
-        h2.u-centered me
-    section.content.cat(ng-show="isCurrentPage('likes')")
+        h2.u-centered {{ pages[currentPage].title }}
+    section.content.can(ng-show="isCurrentPage('can')")
       .container
-        h2.u-centered likes
-    section.content.car(ng-show="isCurrentPage('can')")
+        h2.u-centered {{ pages[currentPage].title }}
+    section.content.contact(ng-show="isCurrentPage('contact')")
       .container
-        h2.u-centered can i do?
-    section.content.dino(ng-show="isCurrentPage('contact')")
-      .container
-        h2.u-centered contact
-    section.content.contact(ng-show="isCurrentPage('social')")
+        h2.u-centered {{ pages[currentPage].title }}
+        a(href="mailto:hi@manfredmmm.com" target="_top") hi@manfredmmm.com
+    section.content.social(ng-show="isCurrentPage('social')")
       .container
         ul.social
           li

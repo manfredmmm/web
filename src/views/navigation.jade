@@ -10,6 +10,6 @@ a.home.z-index10.black(href="http://localhost:8080")
         li.active(ng-repeat="page in pages")
           a(ng-click="goTo($index)" ng-class="{ active: isCurrentPage(page.name) }" href) 
             span.binary {{ page.binary }}
-            span - {{ page.name }}
+            span - {{ page.title }}
 a.nav.previous.z-index10(ng-click="previous()" href ng-hide="isCurrentPage('home')")
 a.nav.next.z-index10(ng-click="next()" href ng-hide="isCurrentPage('social')")
