@@ -39052,29 +39052,38 @@ return jQuery;
     app.controller('sectionsController', ['$scope', function ($scope) {
         $scope.currentPage = 0;
         $scope.pages = [{
-              binary: '000',
               name: 'home',
-              title: 'home'
+              binary: '000',
+              title: 'home',
+              style: 'white'
             }, {
-              binary: '001',
               name: 'me',
-              title: 'bio'
+              binary: '001',
+              title: 'bio',
+              style: 'black'
             }, {
-              binary: '010',
               name: 'can',
-              title: 'what can I do?'
+              binary: '010',
+              title: 'what can I do?',
+              style: 'black'
             }, {
-              binary: '011',
               name: 'contact',
-              title: 'contact'
+              binary: '011',
+              title: 'contact',
+              style: 'white'
             }, {
-              binary: '100',
               name: 'social',
-              title: 'social'
+              binary: '100',
+              title: 'social',
+              style: 'white'
         }];
 
         $scope.isCurrentPage = function (page) {
             return $scope.pages[$scope.currentPage].name === page;
+        };
+
+        $scope.isCurrentPageBlack = function () {
+            return $scope.pages[$scope.currentPage].black === 'true';
         };
 
         $scope.next = function () {
@@ -39088,6 +39097,10 @@ return jQuery;
         $scope.goTo = function (pageNum) {
             $scope.currentPage = pageNum;
         };
+
+        $scope.$watch('currentPage', function (currentPage) {
+            $scope.currentPageStyle = $scope.pages[currentPage].style;
+        });
     }]);
 
     app.controller('sidebarController', ['$scope', function ($scope) {

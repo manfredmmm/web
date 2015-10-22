@@ -1,15 +1,15 @@
-a.home.black.z-index10(href="http://localhost:8080")
+a.home.z-index10(href="http://localhost:8080" ng-class="currentPageStyle" ng-hide="isCurrentPage('home')")
 .menu(ng-controller="sidebarController")
-  a.burger.z-index10(ng-click="toggleSidebar()" ng-show="!sidebarActive" href)
+  a.burger.z-index10(ng-click="toggleSidebar()" ng-show="!sidebarActive")
     img(ng-src="/images/icons/burger-white.svg")
   .sidebar.z-index10(ng-class="{ active: sidebarActive }")
-    a.close(ng-click="toggleSidebar()" ng-show="sidebarActive" href)
+    a.close(ng-click="toggleSidebar()" ng-show="sidebarActive")
       img(ng-src="/images/icons/close.svg")
     nav
       ul.nav
         li.active(ng-repeat="page in pages")
-          a(ng-click="goTo($index)" ng-class="{ active: isCurrentPage(page.name) }" href) 
+          a(ng-click="goTo($index)" ng-class="{ active: isCurrentPage(page.name) }") 
             span.binary {{ page.binary }}
             span - {{ page.title }}
-a.nav.previous.black.z-index10(ng-click="previous()" href ng-hide="isCurrentPage('home')")
-a.nav.next.black.z-index10(ng-click="next()" href ng-hide="isCurrentPage('social')")
+a.nav.previous.z-index10(ng-click="previous()" ng-class="currentPageStyle" ng-hide="isCurrentPage('home')")
+a.nav.next.z-index10(ng-click="next()" ng-class="currentPageStyle" ng-hide="isCurrentPage('social')")
