@@ -3,6 +3,7 @@ section
   background-position center
   width 100vw
   height 100vh
+  overflow hidden
 section.home
   top 0
   left 0
@@ -24,8 +25,6 @@ section.home
     bottom 5%
     opacity 0
     animation fadeInUp .75s 1.5s
-  h1
-    margin-bottom 15px
   .u-bold
     margin-right 10px
   video
@@ -41,14 +40,21 @@ section.home
     animation fadeIn 3s .75s
 section.me
   background-color m-white
-  animatiom fadeInRight 1s 0s
+  animation fadeInRight .4s .2s
+  img,
+  .text
+    col(1/2)
+  .text
+    margin-top 37%
 section.can
   background-color m-white
-  animatiom fadeInRight 1s 0s
+  animation fadeInRight .4s .2s
 section.contact
   background-color darkest-grey
+  animation fadeInRight .4s .2s
 section.social
   background-color darkest-grey
+  animation fadeInRight .4s .2s
 ul.social
   li
     display inline
