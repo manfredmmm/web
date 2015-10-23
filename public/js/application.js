@@ -39112,7 +39112,82 @@ return jQuery;
     }]);
 
     app.controller('canIUseController', ['$scope', function ($scope) {
-        $scope.skills = [];
+        $scope.families = [{
+                name: "html",
+                skills: [{
+                    name: "html5",
+                    level: 5
+                }, {
+                    name: "jade",
+                    level: 10
+                }, {
+                    name: "haml",
+                    level: 10
+                }, {
+                    name: "slim",
+                    level: 10
+                }]
+            }, {
+                name: "javascript",
+                skills: [{
+                    name: "javascript",
+                    level: 5
+                }, {
+                    name: "angularjs",
+                    level: 10
+                }, {
+                    name: "jquery",
+                    level: 10
+                }, {
+                    name: "node",
+                    level: 10
+                }]
+            }, {
+                name: "frameworks",
+                skills: [{
+                    name: "ruby on rails",
+                    level: 10
+                }, {
+                    name: "angularjs",
+                    level: 10
+                }]
+            }, {
+                name: "web design",
+                skills: [{
+                    name: "responsive design",
+                    level: 10
+                }, {
+                    name: "ux-ui",
+                    level: 10
+                }, {
+                    name: "web design",
+                    level: 10
+                }]
+            }, {
+                name: "Front end frameworks",
+                skills: [{
+                    name: "twitter bootstrap",
+                    level: 10
+                }, {
+                    name: "foundation",
+                    level: 10
+                }]
+            }, {
+                name: "Design tools",
+                skills: [{
+                    name: "illustrator",
+                    level: 10
+                }, {
+                    name: "photoshop",
+                    level: 10
+                }]
+            }, {
+                name: "3D library",
+                skills: [{
+                    name: "three.js",
+                    level: 10
+                }]
+        }];
     }]);
 })();
 
