@@ -1,2 +1,11 @@
 section.can(ng-show="isCurrentPage('can')")
-  h2.u-centered {{ pages[currentPage].title }}
+  .skills-table(ng-controller="canIUseController")
+    .header
+      h3 {{ pages[currentPage].title }}
+      input(ng-model='skill' placeholder="skill")
+      span ?
+    .content
+      .family(ng-repeat="n in [1,2,3,4,5,6]")
+        h4.u-uppercase skill {{ n }}
+        ul(ng-repeat="s in [1,2,3]")
+          li skill {{ s }}

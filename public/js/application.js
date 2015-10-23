@@ -39110,6 +39110,10 @@ return jQuery;
             $scope.sidebarActive = !$scope.sidebarActive;
         };
     }]);
+
+    app.controller('canIUseController', ['$scope', function ($scope) {
+        $scope.skills = [];
+    }]);
 })();
 
 (function () {
