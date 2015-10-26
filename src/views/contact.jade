@@ -1,3 +1,5 @@
 section.contact(ng-show="isCurrentPage('contact')")
-  h2.u-centered {{ pages[currentPage].title }}
-  a(href="mailto:hi@manfredmmm.com" target="_top") hi@manfredmmm.com
+  .u-centered-content
+    .text
+      h2.u-centered.u-uppercase {{ pages[currentPage].title }}
+      a(href="mailto:hi@manfredmmm.com" target="_top") hi@manfredmmm.com

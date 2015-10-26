@@ -43,13 +43,13 @@ section.home
     transform translateX(-50%) translateY(-50%)
     animation fadeIn 3s .75s
 section.me
-  animation fadeInRight .4s .2s
   padding 0 35px
   background-color dark-white
   .image,
   .text
     col(1/2)
     height 100%
+    animation fadeInRight .4s .2s
   .image
     background-image url("/images/dummy.png")
     background-size 35%
@@ -63,9 +63,9 @@ section.me
     margin-top 36%
 section.can
   background-color dark-white
-  animation fadeInRight .4s .2s
   .skills-table
     center(70%)
+    animation fadeInRight .4s .2s
     color dark-white
     margin-top 75px
   .header
@@ -83,10 +83,35 @@ section.can
     margin-bottom 20px
 section.contact
   background-color darkest-grey
-  animation fadeInRight .4s .2s
+  .u-centered-content
+    animation fadeInRight .4s .2s
+  h2
+    color lightless-grey
+  a
+    color lightless-grey
+    text-decoration none
+    padding-bottom 2px
+    border-bottom 1px solid transparent
+    transition-duration .2s
+    position relative
+    &:before
+      content ""
+      position absolute
+      width 100%
+      height 1px
+      bottom 0
+      left 0
+      background-color lightless-grey
+      visibility hidden
+      transform scaleX(0)
+      transition all .3s ease-in-out 0s
+    &:hover:before
+      visibility visible
+      transform scaleX(1)
 section.social
   background-color darkest-grey
-  animation fadeInRight .4s .2s
+  .u-centered-content
+    animation fadeInRight .4s .2s
 ul.social
   li
     display inline
@@ -97,6 +122,6 @@ ul.social
     color darkest-grey
     width 30px
     height 30px
-    background-color dark-grey
+    background-color grey
     border-radius 30px
     line-height 32px

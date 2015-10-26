@@ -23,7 +23,7 @@
             }, {
               name: 'contact',
               binary: '011',
-              title: 'contact',
+              title: "let's talk",
               style: 'white'
             }, {
               name: 'social',
