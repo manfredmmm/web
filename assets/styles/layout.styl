@@ -34,6 +34,8 @@ a.nav
   background-size 30%
   line-height 50px
   cursor pointer
+  span
+    opacity 0
 a.next
   right 10px
   background-position center right
@@ -41,6 +43,12 @@ a.next
     background-image url('/images/icons/right-black.svg')
   &.white
     background-image url('/images/icons/right-white.svg')
+  span
+    float right
+    padding-right 50px
+  &:hover
+    span
+      animation fadeInLeft .2s 0s
 a.previous
   left 10px
   background-position center left
@@ -48,6 +56,12 @@ a.previous
     background-image url('/images/icons/left-black.svg')
   &.white
     background-image url('/images/icons/left-white.svg')
+  span
+    float left
+    padding-left 50px
+  &:hover
+    span
+      animation fadeInRight .2s 0s
 .sidebar
   position absolute
   width 100%

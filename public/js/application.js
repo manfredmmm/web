@@ -39086,14 +39086,6 @@ return jQuery;
             return $scope.pages[$scope.currentPage].black === 'true';
         };
 
-        $scope.seeText = function (navClass) {
-            $('a.nav.' + navClass + ' span').delay(500).fadeIn();
-        };
-
-        $scope.hideText = function (navClass) {
-            $('a.nav.' + navClass + ' span').delay(200).fadeOut();
-        };
-
         $scope.next = function () {
             $scope.currentPage += 1;
         };
