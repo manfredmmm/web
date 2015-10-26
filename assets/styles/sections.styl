@@ -1,14 +1,13 @@
 section
-  background-size cover
-  background-position center
-  width 100vw
-  height 100vh
   overflow hidden
+  width calc(100vw - 20px)
+  height calc(100vh - 20px)
 section.home
   top 0
   left 0
   background-color darkest-grey
-  background-size cover
+  width 100vw
+  height 100vh
   svg
     position absolute
     top 30%
@@ -39,13 +38,25 @@ section.home
     -webkit-transform: translateX(-50%) translateY(-50%)
     animation fadeIn 3s .75s
 section.me
-  background-color m-white
   animation fadeInRight .4s .2s
-  img,
+  margin 10px
+  padding 0 35px
+  background-color m-white
+  .image,
   .text
     col(1/2)
+    height 100%
+  .image
+    background-image url("/images/dummy.png")
+    background-size 35%
+    background-position center bottom
+    background-repeat no-repeat
   .text
-    margin-top 37%
+    display flex
+    align-items center
+    justify-content center
+  .content
+    margin-top 36%
 section.can
   background-color m-white
   animation fadeInRight .4s .2s
