@@ -7,28 +7,23 @@
         $scope.currentPage = 0;
         $scope.pages = [{
               name: 'home',
-              binary: '000',
+              binary: '00',
               title: 'home',
               style: 'white'
             }, {
               name: 'me',
-              binary: '001',
+              binary: '01',
               title: 'bio',
               style: 'black'
             }, {
               name: 'can',
-              binary: '010',
+              binary: '10',
               title: 'what can I do?',
               style: 'black'
             }, {
               name: 'contact',
-              binary: '011',
+              binary: '11',
               title: "let's talk",
-              style: 'white'
-            }, {
-              name: 'social',
-              binary: '100',
-              title: 'social',
               style: 'white'
         }];
 

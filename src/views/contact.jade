@@ -1,5 +1,18 @@
 section.contact(ng-show="isCurrentPage('contact')")
   .u-centered-content
-    .text
-      h2.u-centered.u-uppercase {{ pages[currentPage].title }}
-      a(href="mailto:hi@manfredmmm.com" target="_top") hi@manfredmmm.com
+    .text.u-centered
+      h2.u-uppercase {{ pages[currentPage].title }}
+      a.mail(href="mailto:hi@manfredmmm.com" target="_top") hi@manfredmmm.com
+      ul.social
+        li
+          a(href="https://www.linkedin.com/pub/manfred-miravitllas" target="_blank")
+            i.fa.fa-linkedin
+        li
+          a(href="https://twitter.com/manfredmmm" target="_blank")
+            i.fa.fa-twitter
+        li
+          a(href="http://manfredmmm.tumblr.com/" target="_blank")
+            i.fa.fa-tumblr
+        li
+          a(href="https://github.com/manfredmmm" target="_blank")
+            i.fa.fa-github

@@ -87,41 +87,42 @@ section.contact
     animation fadeInRight .4s .2s
   h2
     color lightless-grey
-  a
+    position relative
+    display block
+    margin-bottom rem(30px)
+    padding-left rem(15px)
+    padding-right rem(15px)
+    padding-bottom rem(10px)
+  h2:before
+    animation borderBottom .4s .6s
+    content ""
+    position absolute
+    width 100%
+    height 1px
+    bottom 0
+    left 0
+    background-color lightless-grey
+    transition all .3s ease-in-out 0s
+  a.mail
     color lightless-grey
     text-decoration none
-    padding-bottom 2px
-    border-bottom 1px solid transparent
-    transition-duration .2s
-    position relative
-    &:before
-      content ""
-      position absolute
-      width 100%
-      height 1px
-      bottom 0
-      left 0
-      background-color lightless-grey
-      visibility hidden
-      transform scaleX(0)
-      transition all .3s ease-in-out 0s
-    &:hover:before
-      visibility visible
-      transform scaleX(1)
-section.social
-  background-color darkest-grey
-  .u-centered-content
-    animation fadeInRight .4s .2s
+    display block
+    margin-bottom rem(120px)
 ul.social
   li
     display inline
-    margin-right 10px
+    margin-right rem(10px)
     text-align center
+  li:last-child
+    margin-right 0
   a
     display inline-block
     color darkest-grey
     width 30px
     height 30px
-    background-color grey
+    background-color m-grey
     border-radius 30px
     line-height 32px
+    transition-duration .4s
+  a:hover
+    background-color light-grey

@@ -12,6 +12,6 @@ a.home.z-index10(href="http://localhost:8080" ng-class="currentPageStyle" ng-hid
             span - {{ page.title }}
 a.nav.previous.z-index10(ng-click="previous()" ng-class="currentPageStyle" ng-hide="isCurrentPage('home')")
   span {{ pages[currentPage-1].title }} - {{ pages[currentPage-1].binary }}
-a.nav.next.z-index10(ng-click="next()" ng-class="currentPageStyle" ng-hide="isCurrentPage('social')")
+a.nav.next.z-index10(ng-click="next()" ng-class="currentPageStyle" ng-hide="isCurrentPage('contact')")
   span(ng-hide="isCurrentPage('home')") 
     | {{ pages[currentPage+1].binary }} - {{ pages[currentPage+1].title }}
