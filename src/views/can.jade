@@ -2,12 +2,17 @@ section.can(ng-show="isCurrentPage('can')")
   .skills-table(ng-controller="canIUseController")
     .header.u-centered
       label {{ pages[currentPage].title }}
-      input(ng-model="searchSkill" placeholder="Skill; for example, ask me for html" align="middle")
-      span ?
+      input(ng-model="searchSkill" placeholder="skill (ask me for html or js)" align="middle")
+      span.question ?
     .content
-      p search by: {{ searchSkill }}
-      .family(ng-repeat="family in families | filter:searchSkill")
+      .family(ng-repeat="family in families | filter:searchSkill" ng-hide="currentSkill")
         h4.u-uppercase {{ family.name }}
-        ul
+        ol
           li(ng-repeat="skill in family.skills")
-            a(ng-click="showLevel(skill)") {{ skill.name }} {{ skill.level }}
+            a(ng-click="showLevel(skill)") {{ skill.name }}
+      .skill-level(ng-show="currentSkill")
+        a.back(ng-click="goBack()")
+          i.fa.fa-angle-left
+          span back
+        h5 {{ currentSkill.name }}
+        p Level: {{ currentSkill.level }}

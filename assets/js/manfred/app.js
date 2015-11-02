@@ -61,6 +61,7 @@
     }]);
 
     app.controller('canIUseController', ['$scope', function ($scope) {
+        $scope.currentSkill = false;
         $scope.families = [{
                 name: "html",
                 skills: [{
@@ -75,12 +76,15 @@
                 }, {
                     name: "slim",
                     level: 10
+                }, {
+                    name: "seo friendly",
+                    level: 10
                 }]
             }, {
                 name: "javascript",
                 skills: [{
-                    name: "javascript",
-                    level: 5
+                    name: "native",
+                    level: 6
                 }, {
                     name: "angularjs",
                     level: 10
@@ -88,8 +92,56 @@
                     name: "jquery",
                     level: 10
                 }, {
-                    name: "node",
+                    name: "nodejs",
                     level: 10
+                }, {
+                    name: "AJAX",
+                    level: 8
+                }, {
+                    name: "JSON",
+                    level: 9
+                }, {
+                    name: "coffeescript",
+                    level: 6
+                }]
+            }, {
+                name: "css",
+                skills: [{
+                    name: "css3",
+                    level: 9
+                }, {
+                    name: "sass/scss",
+                    level: 9
+                }, {
+                    name: "stylus",
+                    level: 9
+                }, {
+                    name: "less",
+                    level: 9
+                }, {
+                    name: "animations",
+                    level: 7
+                }, {
+                    name: "responsive layouts",
+                    level: 8
+                }]
+            }, {
+                name: "js tasks runner",
+                skills: [{
+                    name: "gulp",
+                    level: 8
+                }, {
+                    name: "grunt",
+                    level: 6
+                }]
+            }, {
+                name: "js package manager",
+                skills: [{
+                    name: "npm",
+                    level: 9
+                }, {
+                    name: "bower",
+                    level: 8
                 }]
             }, {
                 name: "frameworks",
@@ -97,7 +149,7 @@
                     name: "ruby on rails",
                     level: 10
                 }, {
-                    name: "angularjs",
+                    name: "sinatra",
                     level: 10
                 }]
             }, {
@@ -136,10 +188,21 @@
                     name: "three.js",
                     level: 10
                 }]
+            }, {
+                name: "source control",
+                skills: [{
+                    name: "git",
+                    level: 7
+                }]
         }];
 
         $scope.showLevel = function (skill) {
-            console.log('See exp with ' + skill.level);
+            $scope.currentSkill = skill;
+        };
+
+        $scope.goBack = function () {
+            $scope.currentSkill = false;
+            $scope.searchSkill = '';
         };
     }]);
 })();
