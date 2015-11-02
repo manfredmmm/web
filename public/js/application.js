@@ -39054,22 +39054,22 @@ return jQuery;
         $scope.pages = [{
               name: 'home',
               binary: '00',
-              title: 'home',
+              title: 'Home',
               style: 'white'
             }, {
               name: 'me',
               binary: '01',
-              title: 'bio',
+              title: 'Biography',
               style: 'black'
             }, {
               name: 'can',
               binary: '10',
-              title: 'what can I do?',
+              title: 'What can I do',
               style: 'black'
             }, {
               name: 'contact',
               binary: '11',
-              title: "let's talk",
+              title: "Let's talk",
               style: 'white'
         }];
 
@@ -39183,6 +39183,10 @@ return jQuery;
                     level: 10
                 }]
         }];
+
+        $scope.showLevel = function (skill) {
+            console.log('See exp with ' + skill.level);
+        };
     }]);
 })();
 

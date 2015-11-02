@@ -63,8 +63,12 @@ section.me
     margin-top 36%
 section.can
   background-color dark-white
+  display flex
+  align-items center
+  justify-content center
   .skills-table
     center(70%)
+    min-width 960px
     animation fadeInRight .4s .2s
     color dark-white
     margin-top 75px
@@ -73,7 +77,39 @@ section.can
     height 80px
     background-color darkest-grey
     margin-bottom 5px
+    display flex
+    align-items center
+    justify-content center
+  label,
+  input,
+  span
+    display inline-block
+    margin-right rem(20px)
+  label
+    font-size fontSize-largest
+    font-family "Raleway Regular"
+  input
+    appearance none
+    border-radius 0
+    width 40%
+    min-width 190px
+    outline 0
+    border none
+    padding 10px 7px
+    font-family "Raleway Regular"
+    color dark-grey
+    font-size fontSize-small
+    background-color darkest-grey
+    border-bottom 1px solid light-grey
+    text-align center
+    transition-duration .2s
+    &:hover
+      background-color lighten(darkest-grey, 10%)
+  span
+    font-size fontSize-largest
+    font-family "Raleway Regular"
   .content
+    font-family "Raleway Regular"
     width 100%
     height 400px
     background-color m-grey
@@ -81,6 +117,13 @@ section.can
   .family
     col(1/3, cycle: 3)
     margin-bottom 20px
+    cf()
+  a
+    cursor pointer
+  li
+    margin-bottom 3px
+    margin-left 20px
+    list-style-type square
 section.contact
   background-color darkest-grey
   .u-centered-content

@@ -1,12 +1,13 @@
 section.can(ng-show="isCurrentPage('can')")
   .skills-table(ng-controller="canIUseController")
-    .header
-      h3 {{ pages[currentPage].title }}
-      input(ng-model="searchSkill" placeholder="skill")
+    .header.u-centered
+      label {{ pages[currentPage].title }}
+      input(ng-model="searchSkill" placeholder="Skill; for example, ask me for html" align="middle")
       span ?
     .content
       p search by: {{ searchSkill }}
       .family(ng-repeat="family in families | filter:searchSkill")
         h4.u-uppercase {{ family.name }}
-        ul(ng-repeat="skill in family.skills | filter:searchSkill")
-          li {{ skill.name }} {{ skill.level }}
+        ul
+          li(ng-repeat="skill in family.skills")
+            a(ng-click="showLevel(skill)") {{ skill.name }} {{ skill.level }}
