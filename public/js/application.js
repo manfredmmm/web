@@ -39246,6 +39246,8 @@ return jQuery;
             $scope.currentSkill = skill;
         };
 
+        //new Vivus('1', { type: 'oneByOne', duration: 75 });
+
         $scope.isCompleted = function (level) {
             return $scope.currentSkill.level >= level;
         };
