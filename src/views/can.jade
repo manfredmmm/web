@@ -10,9 +10,11 @@ section.can(ng-show="isCurrentPage('can')")
         ol
           li(ng-repeat="skill in family.skills")
             a(ng-click="showLevel(skill)") {{ skill.name }}
+        p.hint.u-italic * This table may be updated. Each day we should go to sleep having learned something new.
       .skill-level(ng-show="currentSkill")
         a.back(ng-click="goBack()")
           i.fa.fa-angle-left
           span back
-        h5 {{ currentSkill.name }}
+        h5.u-uppercase {{ currentSkill.name }}
         p Level: {{ currentSkill.level }}
+        p.hint.u-italic * All levels are approximate because I do not know everything.

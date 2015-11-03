@@ -18,7 +18,7 @@
             }, {
               name: 'can',
               binary: '10',
-              title: 'What can I do',
+              title: 'Can I use',
               style: 'black'
             }, {
               name: 'contact',
