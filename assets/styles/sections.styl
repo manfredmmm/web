@@ -112,24 +112,23 @@ section.can
     position relative
     font-family type-raleway--regular
     width 100%
-    height 435px
+    height 500px
     background-color m-grey
     padding 20px
-  .family
+  li.family
     col(1/3, cycle: 3)
     margin-bottom 20px
-    cf()
   a
     cursor pointer
     transition-duration .4s
     &:hover
       color dark-grey
-  ol
+  ul.skills
     list-style-type square
     font-size fontSize-small
-  li
-    margin-bottom 3px
-    margin-left 20px
+    li
+      margin-bottom 3px
+      margin-left 20px
   a.back
     position absolute
     top 20px
@@ -139,14 +138,34 @@ section.can
     span
       font-size fontSize-base
   .skill-level
+    width 100%
     height 100%
+    display flex
+    align-items center
+    justify-content center
   p.hint
     font-family type-raleway--thin
     font-size fontSize-smaller
     position absolute
     bottom 20px
     right 20px
-    color darken(m-grey, 30%)
+    color darkest-grey
+  span.level
+    font-size fontSize-small
+    margin 0 rem(5px)
+  span.number
+    font-size fontSize-large
+  .skill-content
+    width 100%
+  li.level
+    col(1/10)
+    height 0
+    padding-bottom 7.3%
+    background-color m-white
+    &.completed
+      background-color green
+    &:last-child
+      margin-right 0
 section.contact
   background-color darkest-grey
   .u-centered-content

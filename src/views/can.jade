@@ -5,16 +5,23 @@ section.can(ng-show="isCurrentPage('can')")
       input(ng-model="searchSkill" placeholder="skill (ask me for html or js)" align="middle")
       span.question ?
     .content
-      .family(ng-repeat="family in families | filter:searchSkill" ng-hide="currentSkill")
-        h4.u-uppercase {{ family.name }}
-        ol
-          li(ng-repeat="skill in family.skills")
-            a(ng-click="showLevel(skill)") {{ skill.name }}
-        p.hint.u-italic * This table may be updated. Each day we should go to sleep having learned something new.
+      .all-families(ng-hide="currentSkill")
+        ul
+          li.family(ng-repeat="family in families | filter:searchSkill")
+            h4.u-uppercase {{ family.name }}
+            ul.skills
+              li(ng-repeat="skill in family.skills")
+                a(ng-click="showLevel(skill)") {{ skill.name }}
+        p.hint * This table may be updated. Each day we should go to sleep having learned something new.
       .skill-level(ng-show="currentSkill")
         a.back(ng-click="goBack()")
           i.fa.fa-angle-left
           span back
-        h5.u-uppercase {{ currentSkill.name }}
-        p Level: {{ currentSkill.level }}
-        p.hint.u-italic * All levels are approximate because I do not know everything.
+        .skill-content
+          h5.u-uppercase.u-centered
+            | {{ currentSkill.name }}
+            span.level level:
+            span.number {{ currentSkill.level }}
+          ol.levels
+            li.level(ng-repeat="level in [1,2,3,4,5,6,7,8,9,10]" ng-class="{ completed: isCompleted(level) }")
+        p.hint * All levels are approximate because I do not know everything.

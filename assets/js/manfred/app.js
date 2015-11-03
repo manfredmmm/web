@@ -200,6 +200,10 @@
             $scope.currentSkill = skill;
         };
 
+        $scope.isCompleted = function (level) {
+            return $scope.currentSkill.level >= level;
+        };
+
         $scope.goBack = function () {
             $scope.currentSkill = false;
             $scope.searchSkill = '';
