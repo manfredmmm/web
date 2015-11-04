@@ -23,7 +23,8 @@ section.can(ng-if="isCurrentPage('can')")
             span.level level
             span.number {{ currentSkill.level }}
           ol.levels
-            li.level(ng-repeat="level in [1,2,3,4,5,6,7,8,9,10]")
-              svg(ng-show="level" id="{{ level }}" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 250 250" enable-background="new 0 0 250 250" preserveAspectRatio="xMinYMin meet")
+            li.level(ng-repeat="level in [1,2,3,4,5,6,7,8,9,10]" ng-class="{ uncompleted: !isCompleted(level) }")
+              svg(id="{{ level }}" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 250 250" enable-background="new 0 0 250 250" preserveAspectRatio="xMinYMin meet")
                 include completed
+              span.u-uppercase.u-centered level {{ level }}
         p.hint * All levels are approximate because I don't know everything.
