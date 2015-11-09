@@ -11,9 +11,9 @@ section.can(ng-if="isCurrentPage('can')")
             h4.u-uppercase {{ family.name }}
             ul.skills
               li(ng-repeat="skill in family.skills")
-                a(ng-click="showLevel(skill)") {{ skill.name }}
+                a(ng-click="showLevel(skill)") {{ skill.name }} (lvl {{ skill.level }})
         p.hint * This table may be updated. Each day we should go to sleep having learned something new.
-      .skill-level(ng-show="currentSkill")
+      .skill-level(ng-if="currentSkill")
         a.back(ng-click="goBack()")
           i.fa.fa-angle-left
           span back
@@ -24,7 +24,7 @@ section.can(ng-if="isCurrentPage('can')")
             span.number {{ currentSkill.level }}
           ol.levels
             li.level(ng-repeat="level in [1,2,3,4,5,6,7,8,9,10]" ng-class="{ uncompleted: !isCompleted(level) }")
-              svg(id="{{ level }}" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 250 250" enable-background="new 0 0 250 250" preserveAspectRatio="xMinYMin meet")
+              svg(ng-if="currentSkill" id="tick-{{ level }}" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 250 250" enable-background="new 0 0 250 250" preserveAspectRatio="xMinYMin meet")
                 include completed
-              span.u-uppercase.u-centered level {{ level }}
+              span.u-uppercase.u-centered lvl {{ level }}
         p.hint * All levels are approximate because I don't know everything.

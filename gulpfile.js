@@ -34,9 +34,9 @@ gulp.task('styles', function () {
 
 gulp.task('js', function () {
     return gulp.src([
-        'node_modules/angular/angular.js',
-        'node_modules/vivus/dist/vivus.js',
         'node_modules/jquery/dist/jquery.js',
+        'node_modules/vivus/dist/vivus.js',
+        'node_modules/angular/angular.js',
         'assets/js/manfred/app.js',
         'assets/js/application.js'
     ])

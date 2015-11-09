@@ -27,6 +27,9 @@
               style: 'white'
         }];
 
+
+        new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
+
         $scope.isCurrentPage = function (page) {
             return $scope.pages[$scope.currentPage].name === page;
         };
@@ -35,11 +38,11 @@
             return $scope.pages[$scope.currentPage].black === 'true';
         };
 
-        $scope.next = function () {
+        $scope.nextPage = function () {
             $scope.currentPage += 1;
         };
 
-        $scope.previous = function () {
+        $scope.previousPage = function () {
             $scope.currentPage -= 1;
         };
 
@@ -200,7 +203,22 @@
             $scope.currentSkill = skill;
         };
 
-        //new Vivus('1', { type: 'oneByOne', duration: 75 });
+
+        // TODO: falta fer que es dibuixin els ticks un per un
+        $scope.$watch('currentSkill', function (newValue, oldValue) {
+            console.log('current skill: ' + $scope.currentSkill.name);
+            if (newValue !== false) {
+                console.log('updateeeeeee');
+                $('svg#tick-1 path').css('stroke', '#000');
+                if (($('svg#tick-1').length) > 0) {
+                    //new Vivus('tick-1', { type: 'oneByOne', duration: 75 });
+                    $('svg#tick-1 path').css('stroke', '#ffffff');
+                    console.log('tick-1');
+                } else {
+                    console.log('ola k ase nene');
+                }
+            }
+        });
 
         $scope.isCompleted = function (level) {
             return $scope.currentSkill.level >= level;

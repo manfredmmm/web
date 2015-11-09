@@ -1,16 +1,17 @@
-section.home(ng-show="isCurrentPage('home')")
-  svg.z-index1(id="home-icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 200 615 365" enable-background="new 0 200 615 365" preserveAspectRatio="xMinYMin meet")
-    path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M2,559.5c202.897-349.059,0,0,202.897-349.059")
-    path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M205,210.5c202.592,349.516,0,0,202.592,349.516")
-    path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M407.592,560.273c-405.779-0.516,0.104,0-405.592-0.516")
-    path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M305.75,384.316c102.332-173.875,0,0,102.332-173.875")
-    path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M408,210.5c201.307,349.516,0,0,201.307,349.516")
-    path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M609.307,560.016c-201.715,0,0,0-201.715,0")
-    path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M3.5,350c326,0.5,282.318,0,605.807,0.5")
-  .text.u-centered.z-index1
-    h1
-      span.u-bold.u-jumbo Hi!
-      | I'm manfred miravitllas mas
-    h2 a www developer
+section.home.u-centered-content(ng-show="isCurrentPage('home')")
   video(autoplay="" preload="auto" loop="")
     source(src="/videos/mmm.mp4" type="video/mp4")
+  .content
+    svg(id="home-icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 200 615 365" enable-background="new 0 200 615 365" preserveAspectRatio="xMinYMin meet")
+      path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M2,559.5c202.897-349.059,0,0,202.897-349.059")
+      path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M205,210.5c202.592,349.516,0,0,202.592,349.516")
+      path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M407.592,560.273c-405.779-0.516,0.104,0-405.592-0.516")
+      path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M305.75,384.316c102.332-173.875,0,0,102.332-173.875")
+      path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M408,210.5c201.307,349.516,0,0,201.307,349.516")
+      path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M609.307,560.016c-201.715,0,0,0-201.715,0")
+      path(fill="none" stroke="#F7F7F7" stroke-width="5" stroke-miterlimit="10" d="M3.5,350c326,0.5,282.318,0,605.807,0.5")
+    .text.u-centered
+      h1
+        span.u-bold.u-jumbo Hi!
+        | I'm manfred miravitllas mas
+      h2 www developer
