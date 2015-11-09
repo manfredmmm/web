@@ -30,6 +30,20 @@
 
         new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
 
+        var options = {
+            horizontal: true,
+            itemNav: 'forceCentered',
+            activateMiddle: 'true',
+            speed: 300,
+            mouseDragging: true,
+            touchDragging: true,
+            prevPage: $('a.prev-link'),
+            nextPage: $('a.next-link'),
+            easing: 'linear'
+        };
+
+        $('.frame').sly(options);
+
         $scope.isCurrentPage = function (page) {
             return $scope.pages[$scope.currentPage].name === page;
         };
