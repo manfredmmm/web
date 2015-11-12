@@ -41284,6 +41284,7 @@ $provide.value("$locale", {
         }];
         $scope.currentPage = 0;
         $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
+        $scope.menuActive = false;
 
         var options = {
             horizontal: true,
@@ -41314,25 +41315,23 @@ $provide.value("$locale", {
             });
         });
 
-        if ($('svg#home-icon').length > 0) {
-            new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
-        }
-
         $scope.isCurrentPage = function (page) {
             return $scope.pages[$scope.currentPage].name === page;
         };
 
+        $scope.toggleMenu = function () {
+            $scope.menuActive = !$scope.menuActive;
+        };
+
         $scope.goTo = function (pageNum) {
+            sly.toStart(pageNum, true);
             $scope.currentPage = pageNum;
+            $scope.menuActive = !$scope.menuActive;
         };
-    }]);
-
-    app.controller('sidebarController', ['$scope', function ($scope) {
-        $scope.sidebarActive = false;
-
-        $scope.toggleSidebar = function () {
-            $scope.sidebarActive = !$scope.sidebarActive;
-        };
+        
+        if ($('svg#home-icon').length > 0) {
+            new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
+        }
     }]);
 
     app.controller('canIUseController', ['$scope', function ($scope) {
@@ -41474,7 +41473,6 @@ $provide.value("$locale", {
         $scope.showLevel = function (skill) {
             $scope.currentSkill = skill;
         };
-
 
         // TODO: falta fer que es dibuixin els ticks un per un
         $scope.$watch('currentSkill', function (newValue, oldValue) {
