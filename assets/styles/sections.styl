@@ -6,21 +6,16 @@ section
 section.home
   width 100vw
   height 100vh
-  background-color darkest-grey
   margin 0
+  background-color darkest-grey
   overflow hidden
-  //video
-  //  position relative
-  //  top 50%
-  //  left 50%
-  //  margin-left -704px
-  //  margin-top -481px
-  //  animation fadeIn 3s 1s
-  //  min-width 100%
-  //  min-height 100%
-  //  width auto
-  //  height auto
-  //  transform translateX(-50%) translateY(-50%)
+  video
+    position fixed
+    top 0
+    left 0
+    min-width 100vw
+    min-height 100vh
+    animation fadeIn 3s 1s
   svg
     position relative
     center(75%)
@@ -210,5 +205,6 @@ ul.social
 .frame
   width 100vw
   height 100vh
-  li.page
-    float left
+  ul.pages
+    li
+      float left

@@ -41289,6 +41289,9 @@ $provide.value("$locale", {
             horizontal: true,
             // Item based navigation
             itemNav: 'basic',
+            // Scrolling
+            scrollSource: $('ul.pages'),
+            scrollBy: 1,
             // Dragging
             mouseDragging: true,
             touchDragging: true,
@@ -41305,7 +41308,7 @@ $provide.value("$locale", {
         var sly = new Sly(frame, options).init();
 
         sly.on('moveEnd', function (eventName) {
-            $scope.$apply(function(){
+            $scope.$apply(function () {
                 $scope.currentPage = sly.rel.activePage;
                 $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
             });
