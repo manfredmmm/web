@@ -3,8 +3,14 @@ html
   include head
   body(ng-app="mApp" ng-strict-di ng-controller="sectionsController")
     include navigation
-    include home
-    include me
-    include can
-    include contact
+    .frame
+      ul.pages
+        li.page
+          include home
+        li.page
+          include me
+        li.page
+          include can
+        li.page
+          include contact
     script(src="/js/application.js")

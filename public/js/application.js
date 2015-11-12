@@ -41261,7 +41261,6 @@ $provide.value("$locale", {
     var app = angular.module('mApp', []);
 
     app.controller('sectionsController', ['$scope', function ($scope) {
-        $scope.currentPage = 0;
         $scope.pages = [{
               name: 'home',
               binary: '00',
@@ -41283,47 +41282,46 @@ $provide.value("$locale", {
               title: "Let's talk",
               style: 'white'
         }];
-
-
-        new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
+        $scope.currentPage = 0;
+        $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
 
         var options = {
             horizontal: true,
-            itemNav: 'forceCentered',
-            activateMiddle: 'true',
-            speed: 300,
+            // Item based navigation
+            itemNav: 'basic',
+            // Dragging
             mouseDragging: true,
             touchDragging: true,
-            prevPage: $('a.prev-link'),
-            nextPage: $('a.next-link'),
-            easing: 'linear'
+            // Navigation buttons
+            prevPage: $('a.nav-previous'),
+            nextPage: $('a.nav-next'),
+            // Mixed options
+            speed: 400,
+            easing: 'swing',
+            keyboardNavBy: 'pages'
         };
 
-        $('.frame').sly(options);
+        var frame = $('.frame');
+        var sly = new Sly(frame, options).init();
+
+        sly.on('moveEnd', function (eventName) {
+            $scope.$apply(function(){
+                $scope.currentPage = sly.rel.activePage;
+                $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
+            });
+        });
+
+        if ($('svg#home-icon').length > 0) {
+            new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
+        }
 
         $scope.isCurrentPage = function (page) {
             return $scope.pages[$scope.currentPage].name === page;
         };
 
-        $scope.isCurrentPageBlack = function () {
-            return $scope.pages[$scope.currentPage].black === 'true';
-        };
-
-        $scope.nextPage = function () {
-            $scope.currentPage += 1;
-        };
-
-        $scope.previousPage = function () {
-            $scope.currentPage -= 1;
-        };
-
         $scope.goTo = function (pageNum) {
             $scope.currentPage = pageNum;
         };
-
-        $scope.$watch('currentPage', function (currentPage) {
-            $scope.currentPageStyle = $scope.pages[currentPage].style;
-        });
     }]);
 
     app.controller('sidebarController', ['$scope', function ($scope) {
