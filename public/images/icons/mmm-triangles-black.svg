@@ -5,17 +5,16 @@
 	 width="688px" height="438px" viewBox="-35.167 -30.5 688 438" enable-background="new -35.167 -30.5 688 438"
 	 xml:space="preserve">
 <g id="dibuixat_linies">
-	<path fill="none" stroke="#1C1C1C" stroke-width="35" stroke-miterlimit="10" d="M5.25,143.642c326,0.5,282.317,0,605.806,0.5"/>
-	<path fill="none" stroke="#1C1C1C" stroke-width="35" stroke-miterlimit="10" d="M3.75,353.143c202.896-349.06,0,0,202.896-349.06"
-		/>
-	<path fill="none" stroke="#1C1C1C" stroke-width="35" stroke-miterlimit="10" d="M206.75,4.142
-		c202.591,349.516,0,0,202.591,349.516"/>
-	<path fill="none" stroke="#1C1C1C" stroke-width="35" stroke-miterlimit="10" d="M409.341,353.916
-		c-405.778-0.516,0.104,0-405.591-0.516"/>
-	<path fill="none" stroke="#1C1C1C" stroke-width="35" stroke-miterlimit="10" d="M307.498,177.958
-		c102.332-173.875,0,0,102.332-173.875"/>
-	<path fill="none" stroke="#1C1C1C" stroke-width="35" stroke-miterlimit="10" d="M409.748,4.142
-		c201.308,349.516,0,0,201.308,349.516"/>
-	<path fill="none" stroke="#1C1C1C" stroke-width="35" stroke-miterlimit="10" d="M611.056,353.658c-201.715,0,0,0-201.715,0"/>
+	<path fill="none" stroke="#5D5D5D" stroke-width="20" stroke-miterlimit="10" d="M-1,147.517h618.333"/>
+	<path fill="none" stroke="#5D5D5D" stroke-width="20" stroke-miterlimit="10" d="M3.75,357.143L206.647,8.083"/>
+	<path fill="none" stroke="#5D5D5D" stroke-width="20" stroke-miterlimit="10" d="M206.75,8.142l202.591,349.516"/>
+	<path fill="none" stroke="#1C1C1C" stroke-width="20" stroke-miterlimit="10" d="M2.742,366.318"/>
+	<path fill="none" stroke="#5D5D5D" stroke-width="20" stroke-miterlimit="10" d="M408.333,366.834"/>
+	<path fill="none" stroke="#5D5D5D" stroke-width="20" stroke-miterlimit="10" d="M307.498,181.958L409.83,8.083"/>
+	<path fill="none" stroke="#5D5D5D" stroke-width="20" stroke-miterlimit="10" d="M409.83,8.083l201.226,349.575"/>
+	<path fill="none" stroke="#5D5D5D" stroke-width="20" stroke-miterlimit="10" d="M409.341,357.658
+		c-0.807,0-410.971,0.032-410.971,0.032"/>
+	
+		<line fill="none" stroke="#5D5D5D" stroke-width="20" stroke-miterlimit="10" x1="409.341" y1="357.658" x2="617.036" y2="357.69"/>
 </g>
 </svg>
