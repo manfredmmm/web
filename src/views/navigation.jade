@@ -12,5 +12,5 @@ a.home.z-index10(href="http://localhost:8080" ng-class="currentPageStyle" ng-hid
 a.nav.nav-previous.z-index10(ng-class="currentPageStyle" ng-hide="isCurrentPage('home')")
   h6 {{ pages[currentPage-1].binary }} - {{ pages[currentPage-1].title }}
 a.nav.nav-next.z-index10(ng-class="currentPageStyle" ng-hide="isCurrentPage('contact')")
-  h6(ng-hide="isCurrentPage('home')") 
+  h6
     | {{ pages[currentPage+1].binary }} - {{ pages[currentPage+1].title }}
