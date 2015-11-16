@@ -1,9 +1,8 @@
 a.home.z-index10(href="http://localhost:8080" ng-class="currentPageStyle" ng-hide="isCurrentPage('home')")
 .menu
-  a.burger.z-index10(ng-click="toggleMenu()" ng-class="currentPageStyle" ng-show="!menuActive")
-  .options.z-index10(ng-class="{ active: menuActive }")
-    a.close(ng-click="toggleMenu()" ng-show="menuActive")
-      img(ng-src="/images/icons/close.svg")
+  a.nav-toggle.z-index10(ng-click="toggleMenu()" ng-class="{ 'white': currentPageStyle === 'white', 'black': currentPageStyle === 'black', 'active': menuActive }")
+    span
+  .options.z-index9(ng-class="{ active: menuActive }")
     nav
       ul.nav
         li.active(ng-repeat="page in pages")

@@ -107,20 +107,52 @@ a.nav-previous
   span.binary
     width 58px
     display inline-block
-a.burger,
-a.close
-  position fixed
+a.nav-toggle
+  position absolute
   top 15px
   right 20px
-  width 20px
-  height 20px
-  display block
-  animation fadeIn
-a.burger
-  background-size 100%
-  background-repeat no-repeat
-  background-position center
+  padding 10px 28px 13px 0px
+  cursor pointer
+  span,
+  span:before,
+  span:after
+    position absolute
+    height 3px
+    width 28px
+    display block
+    background m-white
+    cursor pointer
+    content ''
+  span:before
+    top -8px
+  span:after
+    bottom -8px
+  span,
+  span:before,
+  span:after
+    transition all .4s ease-in-out
+  &.active
+    &.white,
+    &.black
+      span
+        background transparent
+      span:before,
+      span:after
+        background dark-grey
+  &.active span:before,
+  &.active span:after
+    top 0
+  &.active span:before
+    transform rotate(45deg)
+  &.active span:after
+    transform rotate(-45deg)
   &.white
-    background-image url('/images/icons/burger-white.svg')
+    span,
+    span:before,
+    span:after
+      background m-white
   &.black
-    background-image url('/images/icons/burger-black.svg')
+    span,
+    span:before,
+    span:after
+      background dark-grey

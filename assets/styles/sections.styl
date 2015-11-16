@@ -3,17 +3,21 @@ section
   overflow hidden
   width calc(100vw - 12px)
   height calc(100vh - 12px)
+  opacity 0
+  &.active
+    animation fadeIn .3s .1s
 section.home
   width 100vw
   height 100vh
   margin 0
   background-color darkest-grey
   overflow hidden
+  opacity 1
   video
     position fixed
     top 0
     left 0
-    min-width 100vw
+    min-width auto
     min-height 100vh
     animation fadeIn 3s 1s
   svg
@@ -35,7 +39,6 @@ section.me
   .text
     col(1/2)
     height 100%
-    animation fadeInRight .4s .2s
   .image
     background-image url("/images/manfred-background.png")
     background-size 35%
@@ -160,6 +163,9 @@ section.contact
   background-color darkest-grey
   .u-centered-content
     animation fadeInRight .4s .2s
+  &.active
+    h2
+      display block
   h2
     color lightless-grey
     position relative
@@ -168,6 +174,7 @@ section.contact
     padding-left rem(15px)
     padding-right rem(15px)
     padding-bottom rem(10px)
+    display none
   h2:before
     animation borderBottom .4s .6s
     content ""

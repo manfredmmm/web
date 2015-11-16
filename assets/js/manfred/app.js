@@ -52,7 +52,12 @@
         var sly = new Sly(frame, options).init();
 
         sly.on('moveEnd', function (eventName) {
-            $scope.$apply(function () {
+            var pageIndex = sly.rel.activePage;
+
+            $('ul.pages li section').removeClass('active');
+            $('ul.pages li.item-' + pageIndex + ' section').addClass('active');
+
+            $scope.$apply( function () {
                 $scope.currentPage = sly.rel.activePage;
                 $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
             });
