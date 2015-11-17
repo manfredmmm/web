@@ -38,7 +38,7 @@ gulp.task('js', function () {
         'bower_components/sly/dist/sly.js',
         'node_modules/vivus/dist/vivus.js',
         'node_modules/angular/angular.js',
-        'assets/js/manfred/app.js',
+        'assets/js/manfred/**/*.js',
         'assets/js/application.js'
     ])
     .pipe(plumber())
