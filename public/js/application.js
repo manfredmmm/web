@@ -41257,10 +41257,115 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 (function () {
     "use strict";
-
     angular.module('mmmApp', []);
-
 })();
+
+(function () {
+    "use strict";
+
+    function CanIUseController ($scope, Families) {
+        $scope.families = Families.all();
+        $scope.currentSkill = false;
+
+        $scope.showLevel = function (skill) {
+            $scope.currentSkill = skill;
+        };
+
+        // TODO: falta fer que es dibuixin els ticks un per un
+        $scope.$watch('currentSkill', function (newValue, oldValue) {
+            console.log('current skill: ' + $scope.currentSkill.name);
+            if (newValue !== false) {
+                $('svg#tick-1 path').css('stroke', '#000');
+                if (($('svg#tick-1').length) > 0) {
+                    //new Vivus('tick-1', { type: 'oneByOne', duration: 75 });
+                    $('svg#tick-1 path').css('stroke', '#ffffff');
+                } else {
+                    console.log('ola k ase nene');
+                }
+            }
+        });
+
+        $scope.isCompleted = function (level) {
+            return $scope.currentSkill.level >= level;
+        };
+
+        $scope.goBack = function () {
+            $scope.currentSkill = false;
+            $scope.searchSkill = '';
+        };
+    }
+
+    CanIUseController.$inject = ['$scope', 'Families'];
+    angular.module('mmmApp').controller('CanIUseController', CanIUseController);
+}());
+
+(function () {
+    "use strict";
+
+    function SectionsController ($scope, Pages) {
+        $scope.pages = Pages.all();
+        $scope.currentPage = 0;
+        $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
+        $scope.menuActive = false;
+
+        var options = {
+            horizontal: true,
+            // Item based navigation
+            itemNav: 'basic',
+            // Scrolling
+            scrollSource: $('ul.pages'),
+            scrollBy: 1,
+            // Dragging
+            mouseDragging: true,
+            touchDragging: true,
+            // Navigation buttons
+            prevPage: $('a.nav-previous'),
+            nextPage: $('a.nav-next'),
+            // Mixed options
+            speed: 400,
+            easing: 'swing',
+            keyboardNavBy: 'pages'
+        };
+
+        var frame = $('.frame');
+        var sly = new Sly(frame, options).init();
+
+        $scope.sly = sly;
+
+        sly.on('moveEnd', function (eventName) {
+            var pageIndex = sly.rel.activePage;
+
+            $('ul.pages li section').removeClass('active');
+            $('ul.pages li.item-' + pageIndex + ' section').addClass('active');
+
+            $scope.$apply( function () {
+                $scope.currentPage = sly.rel.activePage;
+                $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
+            });
+        });
+
+        $scope.isCurrentPage = function (page) {
+            return $scope.pages[$scope.currentPage].name === page;
+        };
+
+        $scope.toggleMenu = function () {
+            $scope.menuActive = !$scope.menuActive;
+        };
+
+        $scope.goTo = function (pageNum) {
+            sly.toStart(pageNum, true);
+            $scope.currentPage = pageNum;
+            $scope.menuActive = !$scope.menuActive;
+        };
+        
+        if ($('svg#home-icon').length > 0) {
+            new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
+        }
+    }
+
+    SectionsController.$inject = ['$scope', 'Pages'];
+    angular.module('mmmApp').controller('SectionsController', SectionsController);
+}());
 
 (function () {
     "use strict";
@@ -41298,9 +41403,10 @@ $provide.value("$locale", {
 (function () {
     "use strict";
 
-    function CanIUseController ($scope) {
-        $scope.currentSkill = false;
-        $scope.families = [{
+    var app = angular.module('mmmApp');
+
+    app.factory('Families', function () {
+        var families = [{
                 name: "html",
                 skills: [{
                     name: "html5",
@@ -41434,46 +41540,21 @@ $provide.value("$locale", {
                 }]
         }];
 
-        $scope.showLevel = function (skill) {
-            $scope.currentSkill = skill;
+        return {
+            all: function () {
+                return families;
+            }
         };
-
-        // TODO: falta fer que es dibuixin els ticks un per un
-        //$scope.$watch('currentSkill', function (newValue, oldValue) {
-        //    console.log('current skill: ' + $scope.currentSkill.name);
-        //    if (newValue !== false) {
-        //        console.log('updateeeeeee');
-        //        $('svg#tick-1 path').css('stroke', '#000');
-        //        if (($('svg#tick-1').length) > 0) {
-        //            //new Vivus('tick-1', { type: 'oneByOne', duration: 75 });
-        //            $('svg#tick-1 path').css('stroke', '#ffffff');
-        //            console.log('tick-1');
-        //        } else {
-        //            console.log('ola k ase nene');
-        //        }
-        //    }
-        //});
-
-        $scope.isCompleted = function (level) {
-            return $scope.currentSkill.level >= level;
-        };
-
-        $scope.goBack = function () {
-            $scope.currentSkill = false;
-            $scope.searchSkill = '';
-        };
-    }
-
-    CanIUseController.$inject = ['$scope'];
-
-    angular.module('mmmApp').controller('CanIUseController', CanIUseController);
+    });
 }());
 
 (function () {
     "use strict";
 
-    function SectionsController ($scope) {
-        $scope.pages = [{
+    var app = angular.module('mmmApp');
+
+    app.factory('Pages', function () {
+        var pages = [{
               name: 'home',
               binary: '00',
               title: 'Home',
@@ -41494,67 +41575,11 @@ $provide.value("$locale", {
               title: "Let's talk",
               style: 'white'
         }];
-        $scope.currentPage = 0;
-        $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
-        $scope.menuActive = false;
 
-        var options = {
-            horizontal: true,
-            // Item based navigation
-            itemNav: 'basic',
-            // Scrolling
-            scrollSource: $('ul.pages'),
-            scrollBy: 1,
-            // Dragging
-            mouseDragging: true,
-            touchDragging: true,
-            // Navigation buttons
-            prevPage: $('a.nav-previous'),
-            nextPage: $('a.nav-next'),
-            // Mixed options
-            speed: 400,
-            easing: 'swing',
-            keyboardNavBy: 'pages'
+        return {
+            all: function () {
+                return pages;
+            }
         };
-
-        var frame = $('.frame');
-        var sly = new Sly(frame, options).init();
-
-        $scope.sly = sly;
-
-        sly.on('moveEnd', function (eventName) {
-            var pageIndex = sly.rel.activePage;
-
-            $('ul.pages li section').removeClass('active');
-            $('ul.pages li.item-' + pageIndex + ' section').addClass('active');
-
-            $scope.$apply( function () {
-                $scope.currentPage = sly.rel.activePage;
-                $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
-            });
-        });
-
-        $scope.isCurrentPage = function (page) {
-            return $scope.pages[$scope.currentPage].name === page;
-        };
-
-        $scope.toggleMenu = function () {
-            $scope.menuActive = !$scope.menuActive;
-        };
-
-        $scope.goTo = function (pageNum) {
-            sly.toStart(pageNum, true);
-            $scope.currentPage = pageNum;
-            $scope.menuActive = !$scope.menuActive;
-        };
-        
-        if ($('svg#home-icon').length > 0) {
-            new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
-        }
-
-    }
-
-    SectionsController.$inject = ['$scope'];
-
-    angular.module('mmmApp').controller('SectionsController', SectionsController);
+    });
 }());

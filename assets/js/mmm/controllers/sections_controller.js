@@ -1,28 +1,8 @@
 (function () {
     "use strict";
 
-    function SectionsController ($scope) {
-        $scope.pages = [{
-              name: 'home',
-              binary: '00',
-              title: 'Home',
-              style: 'white'
-            }, {
-              name: 'me',
-              binary: '01',
-              title: 'Biography',
-              style: 'black'
-            }, {
-              name: 'can',
-              binary: '10',
-              title: 'Can I use',
-              style: 'black'
-            }, {
-              name: 'contact',
-              binary: '11',
-              title: "Let's talk",
-              style: 'white'
-        }];
+    function SectionsController ($scope, Pages) {
+        $scope.pages = Pages.all();
         $scope.currentPage = 0;
         $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
         $scope.menuActive = false;
@@ -80,10 +60,8 @@
         if ($('svg#home-icon').length > 0) {
             new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
         }
-
     }
 
-    SectionsController.$inject = ['$scope'];
-
+    SectionsController.$inject = ['$scope', 'Pages'];
     angular.module('mmmApp').controller('SectionsController', SectionsController);
 }());
