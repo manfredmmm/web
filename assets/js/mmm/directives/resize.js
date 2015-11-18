@@ -7,9 +7,6 @@
         return function (scope, element, sly) {
             var w = angular.element($window);
 
-            console.log(scope);
-            console.log(sly.rel);
-
             scope.getWindowDimensions = function () {
                 return {
                     'h': w.height(),
@@ -24,7 +21,7 @@
                 console.log('w ' + scope.windowWidth);
                 console.log('h ' + scope.windowHeight);
 
-                //------------------- resize Sly.reload()
+                scope.sly.reload();
             }, true);
 
             w.bind('resize', function () {

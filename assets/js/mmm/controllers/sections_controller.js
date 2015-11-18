@@ -49,6 +49,8 @@
         var frame = $('.frame');
         var sly = new Sly(frame, options).init();
 
+        $scope.sly = sly;
+
         sly.on('moveEnd', function (eventName) {
             var pageIndex = sly.rel.activePage;
 
