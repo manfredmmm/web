@@ -41389,7 +41389,6 @@ $provide.value("$locale", {
                     sly.reload();
                 });
 
-
                 sly.toCenter(Pages.getCurrentPageId($location.url()), true);
             }
         };
@@ -41412,20 +41411,9 @@ $provide.value("$locale", {
         return {
             restrict: 'A',
             scope: {},
-            controller: ['$scope', function ($scope) {
-                $scope.getWindowDimensions = function () {
-                    return {
-                        'w': w.width(),
-                        'h': w.height()
-                    };
-                };
-
-                $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
-                    $scope.$emit("sly:reload");
-                }, true);
-
+            controller: ['$rootScope', function ($rootScope) {
                 w.bind('resize', function () {
-                    $scope.$apply();
+                    $rootScope.$broadcast("sly:reload");
                 });
             }]
         }

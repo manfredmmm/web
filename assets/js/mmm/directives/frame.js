@@ -44,7 +44,6 @@
                     sly.reload();
                 });
 
-
                 sly.toCenter(Pages.getCurrentPageId($location.url()), true);
             }
         };
