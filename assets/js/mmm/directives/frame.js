@@ -22,7 +22,7 @@
         keyboardNavBy: 'pages'
     };
 
-    function frameableDirective () {
+    function frameableDirective ($location, Pages) {
         return {
             restrict: "A",
             scope: {},
@@ -43,11 +43,14 @@
                 $scope.$on('sly:reload', function () {
                     sly.reload();
                 });
+
+
+                sly.toCenter(Pages.getCurrentPageId($location.url()), true);
             }
         };
     }
 
-    frameableDirective.$inject = [];
+    frameableDirective.$inject = ['$location', 'Pages'];
 
     app.directive('frameable', frameableDirective);
 }());

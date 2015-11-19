@@ -41257,7 +41257,12 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 (function () {
     "use strict";
-    angular.module('mmmApp', []);
+
+    var app = angular.module('mmmApp', []);
+
+    app.config(['$locationProvider', function ($locationProvider) {
+        $locationProvider.html5Mode({ enabled: true, requireBase: false });
+    }]);
 })();
 
 (function () {
@@ -41302,7 +41307,7 @@ $provide.value("$locale", {
 (function () {
     "use strict";
 
-    function SectionsController ($scope, Pages) {
+    function SectionsController ($scope, $location, Pages) {
         $scope.pages = Pages.all();
         $scope.currentPage = 0;
         $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
@@ -41325,6 +41330,7 @@ $provide.value("$locale", {
         $scope.$on('sly:activePage', function (event, activePage) {
             $scope.currentPage = activePage;
             $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
+            $location.url($scope.pages[$scope.currentPage].url);
             $scope.$apply();
         });
         
@@ -41333,9 +41339,98 @@ $provide.value("$locale", {
         }
     }
 
-    SectionsController.$inject = ['$scope', 'Pages'];
+    SectionsController.$inject = ['$scope', '$location', 'Pages'];
     angular.module('mmmApp').controller('SectionsController', SectionsController);
 }());
+
+(function () {
+    "use strict";
+
+    var app = angular.module('mmmApp');
+    
+    var options = {
+        horizontal: true,
+        // Item based navigation
+        itemNav: 'basic',
+        // Scrolling
+        scrollSource: $('ul.pages'),
+        scrollBy: 1,
+        // Dragging
+        mouseDragging: true,
+        touchDragging: true,
+        // Navigation buttons
+        prevPage: $('a.nav-previous'),
+        nextPage: $('a.nav-next'),
+        // Mixed options
+        speed: 400,
+        easing: 'swing',
+        keyboardNavBy: 'pages'
+    };
+
+    function frameableDirective ($location, Pages) {
+        return {
+            restrict: "A",
+            scope: {},
+            link: function ($scope, $frame) {
+                var sly = new Sly($frame, options).init(),
+                    $pages = $('ul.pages'),
+                    $sections = $pages.find('li section');
+
+                sly.on('moveEnd', function (eventName) {
+                    var pageIndex = sly.rel.activePage;
+
+                    $sections.removeClass('active');
+                    $pages.find('li.item-' + pageIndex + ' section').addClass('active');
+
+                    $scope.$emit('sly:activePage', sly.rel.activePage);
+                });
+
+                $scope.$on('sly:reload', function () {
+                    sly.reload();
+                });
+
+
+                sly.toCenter(Pages.getCurrentPageId($location.url()), true);
+            }
+        };
+    }
+
+    frameableDirective.$inject = ['$location', 'Pages'];
+
+    app.directive('frameable', frameableDirective);
+}());
+
+
+(function () {
+    "use strict";
+
+    var app = angular.module('mmmApp');
+
+    app.directive('resize', ['$window', function ($window) {
+        var w = angular.element($window);
+
+        return {
+            restrict: 'A',
+            scope: {},
+            controller: ['$scope', function ($scope) {
+                $scope.getWindowDimensions = function () {
+                    return {
+                        'w': w.width(),
+                        'h': w.height()
+                    };
+                };
+
+                $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
+                    $scope.$emit("sly:reload");
+                }, true);
+
+                w.bind('resize', function () {
+                    $scope.$apply();
+                });
+            }]
+        }
+    }]);
+})();
 
 (function () {
     "use strict";
@@ -41493,21 +41588,25 @@ $provide.value("$locale", {
     app.factory('Pages', function () {
         var pages = [{
               name: 'home',
+              url: '',
               binary: '00',
               title: 'Home',
               style: 'white'
             }, {
               name: 'me',
+              url: 'biography',
               binary: '01',
               title: 'Biography',
               style: 'black'
             }, {
               name: 'can',
+              url: 'can-i-use',
               binary: '10',
               title: 'Can I use',
               style: 'black'
             }, {
               name: 'contact',
+              url: 'contact',
               binary: '11',
               title: "Let's talk",
               style: 'white'
@@ -41516,93 +41615,17 @@ $provide.value("$locale", {
         return {
             all: function () {
                 return pages;
+            },
+            getCurrentPageId: function (url) {
+                var i, l;
+
+                for (i = 0, l = pages.length; i < l; i += 1) {
+                    if ('/' + pages[i].url === url) {
+                        return i;
+                    }
+                }
+                return 0;
             }
         };
     });
 }());
-
-(function () {
-    "use strict";
-
-    var app = angular.module('mmmApp');
-    
-    var options = {
-        horizontal: true,
-        // Item based navigation
-        itemNav: 'basic',
-        // Scrolling
-        scrollSource: $('ul.pages'),
-        scrollBy: 1,
-        // Dragging
-        mouseDragging: true,
-        touchDragging: true,
-        // Navigation buttons
-        prevPage: $('a.nav-previous'),
-        nextPage: $('a.nav-next'),
-        // Mixed options
-        speed: 400,
-        easing: 'swing',
-        keyboardNavBy: 'pages'
-    };
-
-    function frameableDirective () {
-        return {
-            restrict: "A",
-            scope: {},
-            link: function ($scope, $frame) {
-                var sly = new Sly($frame, options).init(),
-                    $pages = $('ul.pages'),
-                    $sections = $pages.find('li section');
-
-                sly.on('moveEnd', function (eventName) {
-                    var pageIndex = sly.rel.activePage;
-
-                    $sections.removeClass('active');
-                    $pages.find('li.item-' + pageIndex + ' section').addClass('active');
-
-                    $scope.$emit('sly:activePage', sly.rel.activePage);
-                });
-
-                $scope.$on('sly:reload', function () {
-                    sly.reload();
-                });
-            }
-        };
-    }
-
-    frameableDirective.$inject = [];
-
-    app.directive('frameable', frameableDirective);
-}());
-
-
-(function () {
-    "use strict";
-
-    var app = angular.module('mmmApp');
-
-    app.directive('resize', ['$window', function ($window) {
-        var w = angular.element($window);
-
-        return {
-            restrict: 'A',
-            scope: {},
-            controller: ['$scope', function ($scope) {
-                $scope.getWindowDimensions = function () {
-                    return {
-                        'w': w.width(),
-                        'h': w.height()
-                    };
-                };
-
-                $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
-                    $scope.$emit("sly:reload");
-                }, true);
-
-                w.bind('resize', function () {
-                    $scope.$apply();
-                });
-            }]
-        }
-    }]);
-})();

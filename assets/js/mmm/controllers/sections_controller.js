@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    function SectionsController ($scope, Pages) {
+    function SectionsController ($scope, $location, Pages) {
         $scope.pages = Pages.all();
         $scope.currentPage = 0;
         $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
@@ -24,6 +24,7 @@
         $scope.$on('sly:activePage', function (event, activePage) {
             $scope.currentPage = activePage;
             $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
+            $location.url($scope.pages[$scope.currentPage].url);
             $scope.$apply();
         });
         
@@ -32,6 +33,6 @@
         }
     }
 
-    SectionsController.$inject = ['$scope', 'Pages'];
+    SectionsController.$inject = ['$scope', '$location', 'Pages'];
     angular.module('mmmApp').controller('SectionsController', SectionsController);
 }());
