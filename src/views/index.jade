@@ -1,9 +1,9 @@
 doctype html
-html
+html(ng-app="mmmApp" ng-strict-di ng-controller="SectionsController")
   include head
-  body(resize ng-app="mmmApp" ng-strict-di ng-controller="SectionsController")
+  body(resize)
     include navigation
-    .frame
+    .frame(frameable)
       ul.pages
         li.item-0
           include home

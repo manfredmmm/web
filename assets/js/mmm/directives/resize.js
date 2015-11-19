@@ -4,29 +4,27 @@
     var app = angular.module('mmmApp');
 
     app.directive('resize', ['$window', function ($window) {
-        return function (scope, element, sly) {
-            var w = angular.element($window);
+        var w = angular.element($window);
 
-            scope.getWindowDimensions = function () {
-                return {
-                    'h': w.height(),
-                    'w': w.width()
+        return {
+            restrict: 'A',
+            scope: {},
+            controller: ['$scope', function ($scope) {
+                $scope.getWindowDimensions = function () {
+                    return {
+                        'w': w.width(),
+                        'h': w.height()
+                    };
                 };
-            };
 
-            scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
-                scope.windowHeight = newValue.h;
-                scope.windowWidth = newValue.w;
+                $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
+                    $scope.$emit("sly:reload");
+                }, true);
 
-                console.log('w ' + scope.windowWidth);
-                console.log('h ' + scope.windowHeight);
-
-                scope.sly.reload();
-            }, true);
-
-            w.bind('resize', function () {
-                scope.$apply();
-            });
+                w.bind('resize', function () {
+                    $scope.$apply();
+                });
+            }]
         }
     }]);
 })();

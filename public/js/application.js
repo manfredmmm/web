@@ -41308,42 +41308,6 @@ $provide.value("$locale", {
         $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
         $scope.menuActive = false;
 
-        var options = {
-            horizontal: true,
-            // Item based navigation
-            itemNav: 'basic',
-            // Scrolling
-            scrollSource: $('ul.pages'),
-            scrollBy: 1,
-            // Dragging
-            mouseDragging: true,
-            touchDragging: true,
-            // Navigation buttons
-            prevPage: $('a.nav-previous'),
-            nextPage: $('a.nav-next'),
-            // Mixed options
-            speed: 400,
-            easing: 'swing',
-            keyboardNavBy: 'pages'
-        };
-
-        var frame = $('.frame');
-        var sly = new Sly(frame, options).init();
-
-        $scope.sly = sly;
-
-        sly.on('moveEnd', function (eventName) {
-            var pageIndex = sly.rel.activePage;
-
-            $('ul.pages li section').removeClass('active');
-            $('ul.pages li.item-' + pageIndex + ' section').addClass('active');
-
-            $scope.$apply( function () {
-                $scope.currentPage = sly.rel.activePage;
-                $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
-            });
-        });
-
         $scope.isCurrentPage = function (page) {
             return $scope.pages[$scope.currentPage].name === page;
         };
@@ -41357,6 +41321,12 @@ $provide.value("$locale", {
             $scope.currentPage = pageNum;
             $scope.menuActive = !$scope.menuActive;
         };
+
+        $scope.$on('sly:activePage', function (event, activePage) {
+            $scope.currentPage = activePage;
+            $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
+            $scope.$apply();
+        });
         
         if ($('svg#home-icon').length > 0) {
             new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
@@ -41366,39 +41336,6 @@ $provide.value("$locale", {
     SectionsController.$inject = ['$scope', 'Pages'];
     angular.module('mmmApp').controller('SectionsController', SectionsController);
 }());
-
-(function () {
-    "use strict";
-
-    var app = angular.module('mmmApp');
-
-    app.directive('resize', ['$window', function ($window) {
-        return function (scope, element, sly) {
-            var w = angular.element($window);
-
-            scope.getWindowDimensions = function () {
-                return {
-                    'h': w.height(),
-                    'w': w.width()
-                };
-            };
-
-            scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
-                scope.windowHeight = newValue.h;
-                scope.windowWidth = newValue.w;
-
-                console.log('w ' + scope.windowWidth);
-                console.log('h ' + scope.windowHeight);
-
-                scope.sly.reload();
-            }, true);
-
-            w.bind('resize', function () {
-                scope.$apply();
-            });
-        }
-    }]);
-})();
 
 (function () {
     "use strict";
@@ -41583,3 +41520,89 @@ $provide.value("$locale", {
         };
     });
 }());
+
+(function () {
+    "use strict";
+
+    var app = angular.module('mmmApp');
+    
+    var options = {
+        horizontal: true,
+        // Item based navigation
+        itemNav: 'basic',
+        // Scrolling
+        scrollSource: $('ul.pages'),
+        scrollBy: 1,
+        // Dragging
+        mouseDragging: true,
+        touchDragging: true,
+        // Navigation buttons
+        prevPage: $('a.nav-previous'),
+        nextPage: $('a.nav-next'),
+        // Mixed options
+        speed: 400,
+        easing: 'swing',
+        keyboardNavBy: 'pages'
+    };
+
+    function frameableDirective () {
+        return {
+            restrict: "A",
+            scope: {},
+            link: function ($scope, $frame) {
+                var sly = new Sly($frame, options).init(),
+                    $pages = $('ul.pages'),
+                    $sections = $pages.find('li section');
+
+                sly.on('moveEnd', function (eventName) {
+                    var pageIndex = sly.rel.activePage;
+
+                    $sections.removeClass('active');
+                    $pages.find('li.item-' + pageIndex + ' section').addClass('active');
+
+                    $scope.$emit('sly:activePage', sly.rel.activePage);
+                });
+
+                $scope.$on('sly:reload', function () {
+                    sly.reload();
+                });
+            }
+        };
+    }
+
+    frameableDirective.$inject = [];
+
+    app.directive('frameable', frameableDirective);
+}());
+
+
+(function () {
+    "use strict";
+
+    var app = angular.module('mmmApp');
+
+    app.directive('resize', ['$window', function ($window) {
+        var w = angular.element($window);
+
+        return {
+            restrict: 'A',
+            scope: {},
+            controller: ['$scope', function ($scope) {
+                $scope.getWindowDimensions = function () {
+                    return {
+                        'w': w.width(),
+                        'h': w.height()
+                    };
+                };
+
+                $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
+                    $scope.$emit("sly:reload");
+                }, true);
+
+                w.bind('resize', function () {
+                    $scope.$apply();
+                });
+            }]
+        }
+    }]);
+})();
