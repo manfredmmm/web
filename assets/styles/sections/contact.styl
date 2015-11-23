@@ -1,0 +1,51 @@
+section.contact
+  background-color darkest-grey
+  .u-centered-content
+    animation fadeInRight .4s .2s
+  &.active
+    h2
+      display block
+  h2
+    color lightless-grey
+    position relative
+    display block
+    margin-bottom rem(30px)
+    padding-left rem(15px)
+    padding-right rem(15px)
+    padding-bottom rem(10px)
+    display none
+  h2:before
+    animation borderBottom .4s .6s
+    content ""
+    position absolute
+    width 100%
+    height 2px
+    bottom 0
+    left 0
+    background-color lightless-grey
+    transition all .3s ease-in-out 0s
+  a.mail
+    color lightless-grey
+    text-decoration none
+    display block
+    margin-bottom rem(120px)
+ul.social
+  display inline-block
+  li
+    display inline
+    margin-right rem(10px)
+    text-align center
+  li:last-child
+    margin-right 0
+  a
+    display inline-block
+    color darkest-grey
+    width 32px
+    height 32px
+    background-color m-grey
+    border-radius 32px
+    line-height 33px
+    transition-duration .4s
+  a:hover
+    background-color light-grey
+
