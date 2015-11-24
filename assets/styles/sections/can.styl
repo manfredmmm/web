@@ -107,4 +107,13 @@ section.can
       font-size fontSize-smallest
       display block
       margin-top rem(10px)
-
+@media mobile
+  section.can
+    height auto
+    overflow-y scroll
+    .skills-table
+      margin-top 7.5%
+      min-width auto
+      center(95%)
+    li.family
+      col(1, cycle: 1)

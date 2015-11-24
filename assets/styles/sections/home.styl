@@ -24,23 +24,25 @@ section.home
     margin-bottom 0
   .u-bold
     margin-right 10px
-@media screen and (min-width: small-min) and (max-width: small-max)
+@media mobile
   section.home
+    svg
+      center(45%)
     .text
       color yellow
-@media only screen and (min-width: medium-min) and (max-width: medium-max)
+@media tablet
   section.home
     .text
       color red
-@media only screen and (min-width: large-min) and (max-width: large-max)
-  section.home
-    .text
-      color green
-@media only screen and (min-width: xlarge-min) and (max-width: xlarge-max)
-  section.home
-    .text
-      color blue
-@media only screen and (min-width: xxlarge-min)
-  section.home
-    .text
-      color white
+//@media xdesktop
+//  section.home
+//    .text
+//      color green
+//@media desktop
+//  section.home
+//    .text
+//      color blue
+//@media xxdesktop
+//  section.home
+//    .text
+//      color white

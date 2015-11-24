@@ -14,6 +14,36 @@ section.me
     display flex
     align-items center
     justify-content center
+    .image
+      display none
   .content
-    margin-top 36%
-
+    margin-top 25%
+@media mobile
+  section.me
+    padding 0 45px
+    .content
+      margin-top 20%
+    h2
+      margin-bottom rem(30px)
+@media mobile-portrait
+  section.me
+    .image
+      display none
+    .text
+      display inline-block
+      col(1)
+      .image
+        width 100%
+        margin-top 15%
+        display block
+        background-position center top
+        background-size 68%
+@media mobile-landscape
+  section.me
+    .image
+      col(1/4)
+      background-size 100%
+    .text
+      col(3/4)
+    .content
+      margin-top 0
