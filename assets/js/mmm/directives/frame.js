@@ -29,13 +29,16 @@
             link: function ($scope, $frame) {
                 var sly = new Sly($frame, options).init(),
                     $pages = $('ul.pages'),
-                    $sections = $pages.find('li section');
-
+                    $sections = $pages.find('li section'),
+                    $body = $('body');
+2
                 sly.on('moveEnd', function (eventName) {
                     var pageIndex = sly.rel.activePage;
 
                     $sections.removeClass('active');
                     $pages.find('li.item-' + pageIndex + ' section').addClass('active');
+
+                    $body.scrollTop(0);
 
                     $scope.$emit('sly:activePage', sly.rel.activePage);
                 });
@@ -43,8 +46,6 @@
                 $scope.$on('sly:reload', function () {
                     sly.reload();
                 });
-
-                console.log($scope);
 
                 sly.toCenter(Pages.getCurrentPageId($location.url()), true);
             }

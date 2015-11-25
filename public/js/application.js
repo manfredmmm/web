@@ -41268,6 +41268,86 @@ $provide.value("$locale", {
 (function () {
     "use strict";
 
+    var app = angular.module('mmmApp');
+    
+    var options = {
+        horizontal: true,
+        // Item based navigation
+        itemNav: 'basic',
+        // Scrolling
+        scrollSource: $('ul.pages'),
+        scrollBy: 1,
+        // Dragging
+        mouseDragging: true,
+        touchDragging: true,
+        // Navigation buttons
+        prevPage: $('a.nav-previous'),
+        nextPage: $('a.nav-next'),
+        // Mixed options
+        speed: 400,
+        easing: 'swing',
+        keyboardNavBy: 'pages'
+    };
+
+    function frameableDirective ($location, Pages) {
+        return {
+            restrict: "A",
+            scope: {},
+            link: function ($scope, $frame) {
+                var sly = new Sly($frame, options).init(),
+                    $pages = $('ul.pages'),
+                    $sections = $pages.find('li section'),
+                    $body = $('body');
+2
+                sly.on('moveEnd', function (eventName) {
+                    var pageIndex = sly.rel.activePage;
+
+                    $sections.removeClass('active');
+                    $pages.find('li.item-' + pageIndex + ' section').addClass('active');
+
+                    $body.scrollTop(0);
+
+                    $scope.$emit('sly:activePage', sly.rel.activePage);
+                });
+
+                $scope.$on('sly:reload', function () {
+                    sly.reload();
+                });
+
+                sly.toCenter(Pages.getCurrentPageId($location.url()), true);
+            }
+        };
+    }
+
+    frameableDirective.$inject = ['$location', 'Pages'];
+
+    app.directive('frameable', frameableDirective);
+}());
+
+
+(function () {
+    "use strict";
+
+    var app = angular.module('mmmApp');
+
+    app.directive('resize', ['$window', function ($window) {
+        var w = angular.element($window);
+
+        return {
+            restrict: 'A',
+            scope: {},
+            controller: ['$rootScope', function ($rootScope) {
+                w.bind('resize', function () {
+                    $rootScope.$broadcast("sly:reload");
+                });
+            }]
+        }
+    }]);
+})();
+
+(function () {
+    "use strict";
+
     function CanIUseController ($scope, Families) {
         $scope.families = Families.all();
         $scope.currentSkill = false;
@@ -41343,85 +41423,6 @@ $provide.value("$locale", {
     SectionsController.$inject = ['$scope', '$location', 'Pages'];
     angular.module('mmmApp').controller('SectionsController', SectionsController);
 }());
-
-(function () {
-    "use strict";
-
-    var app = angular.module('mmmApp');
-    
-    var options = {
-        horizontal: true,
-        // Item based navigation
-        itemNav: 'basic',
-        // Scrolling
-        scrollSource: $('ul.pages'),
-        scrollBy: 1,
-        // Dragging
-        mouseDragging: true,
-        touchDragging: true,
-        // Navigation buttons
-        prevPage: $('a.nav-previous'),
-        nextPage: $('a.nav-next'),
-        // Mixed options
-        speed: 400,
-        easing: 'swing',
-        keyboardNavBy: 'pages'
-    };
-
-    function frameableDirective ($location, Pages) {
-        return {
-            restrict: "A",
-            scope: {},
-            link: function ($scope, $frame) {
-                var sly = new Sly($frame, options).init(),
-                    $pages = $('ul.pages'),
-                    $sections = $pages.find('li section');
-
-                sly.on('moveEnd', function (eventName) {
-                    var pageIndex = sly.rel.activePage;
-
-                    $sections.removeClass('active');
-                    $pages.find('li.item-' + pageIndex + ' section').addClass('active');
-
-                    $scope.$emit('sly:activePage', sly.rel.activePage);
-                });
-
-                $scope.$on('sly:reload', function () {
-                    sly.reload();
-                });
-
-                console.log($scope);
-
-                sly.toCenter(Pages.getCurrentPageId($location.url()), true);
-            }
-        };
-    }
-
-    frameableDirective.$inject = ['$location', 'Pages'];
-
-    app.directive('frameable', frameableDirective);
-}());
-
-
-(function () {
-    "use strict";
-
-    var app = angular.module('mmmApp');
-
-    app.directive('resize', ['$window', function ($window) {
-        var w = angular.element($window);
-
-        return {
-            restrict: 'A',
-            scope: {},
-            controller: ['$rootScope', function ($rootScope) {
-                w.bind('resize', function () {
-                    $rootScope.$broadcast("sly:reload");
-                });
-            }]
-        }
-    }]);
-})();
 
 (function () {
     "use strict";
