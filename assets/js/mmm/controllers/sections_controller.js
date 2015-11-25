@@ -16,6 +16,7 @@
         };
 
         $scope.goTo = function (pageNum) {
+            console.log('goto');
             sly.toStart(pageNum, true);
             $scope.currentPage = pageNum;
             $scope.menuActive = !$scope.menuActive;

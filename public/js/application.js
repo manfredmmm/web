@@ -41322,6 +41322,7 @@ $provide.value("$locale", {
         };
 
         $scope.goTo = function (pageNum) {
+            console.log('goto');
             sly.toStart(pageNum, true);
             $scope.currentPage = pageNum;
             $scope.menuActive = !$scope.menuActive;
@@ -41388,6 +41389,8 @@ $provide.value("$locale", {
                 $scope.$on('sly:reload', function () {
                     sly.reload();
                 });
+
+                console.log($scope);
 
                 sly.toCenter(Pages.getCurrentPageId($location.url()), true);
             }
