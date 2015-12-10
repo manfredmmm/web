@@ -41268,84 +41268,6 @@ $provide.value("$locale", {
 (function () {
     "use strict";
 
-    function CanIUseController ($scope, Families) {
-        $scope.families = Families.all();
-        $scope.currentSkill = false;
-
-        $scope.showLevel = function (skill) {
-            $scope.currentSkill = skill;
-        };
-
-        // TODO: falta fer que es dibuixin els ticks un per un
-        $scope.$watch('currentSkill', function (newValue, oldValue) {
-            console.log('current skill: ' + $scope.currentSkill.name);
-            if (newValue !== false) {
-                $('svg#tick-1 path').css('stroke', '#000');
-                if (($('svg#tick-1').length) > 0) {
-                    //new Vivus('tick-1', { type: 'oneByOne', duration: 75 });
-                    $('svg#tick-1 path').css('stroke', '#ffffff');
-                } else {
-                    console.log('ola k ase nene');
-                }
-            }
-        });
-
-        $scope.isCompleted = function (level) {
-            return $scope.currentSkill.level >= level;
-        };
-
-        $scope.goBack = function () {
-            $scope.currentSkill = false;
-            $scope.searchSkill = '';
-        };
-    }
-
-    CanIUseController.$inject = ['$scope', 'Families'];
-    angular.module('mmmApp').controller('CanIUseController', CanIUseController);
-}());
-
-(function () {
-    "use strict";
-
-    function SectionsController ($rootScope, $scope, $location, Pages) {
-        $scope.pages = Pages.all();
-        $scope.currentPage = 0;
-        $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
-        $scope.menuActive = false;
-
-        $scope.isCurrentPage = function (page) {
-            return $scope.pages[$scope.currentPage].name === page;
-        };
-
-        $scope.toggleMenu = function () {
-            $scope.menuActive = !$scope.menuActive;
-        };
-
-        $scope.goTo = function (pageNum) {
-            $scope.currentPage = pageNum;
-            $scope.menuActive = !$scope.menuActive;
-            $rootScope.$broadcast("sly:startPage", pageNum);
-        };
-
-        $scope.$on('sly:activePage', function (event, activePage) {
-            $scope.currentPage = activePage;
-            $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
-            $location.url($scope.pages[$scope.currentPage].url);
-            $scope.$apply();
-        });
-        
-        if ($('svg#home-icon').length > 0) {
-            new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
-        }
-    }
-
-    SectionsController.$inject = ['$rootScope', '$scope', '$location', 'Pages'];
-    angular.module('mmmApp').controller('SectionsController', SectionsController);
-}());
-
-(function () {
-    "use strict";
-
     var app = angular.module('mmmApp');
     
     var options = {
@@ -41426,6 +41348,84 @@ $provide.value("$locale", {
         }
     }]);
 })();
+
+(function () {
+    "use strict";
+
+    function CanIUseController ($scope, Families) {
+        $scope.families = Families.all();
+        $scope.currentSkill = false;
+
+        $scope.showLevel = function (skill) {
+            $scope.currentSkill = skill;
+        };
+
+        // TODO: falta fer que es dibuixin els ticks un per un
+        $scope.$watch('currentSkill', function (newValue, oldValue) {
+            console.log('current skill: ' + $scope.currentSkill.name);
+            if (newValue !== false) {
+                $('svg#tick-1 path').css('stroke', '#000');
+                if (($('svg#tick-1').length) > 0) {
+                    //new Vivus('tick-1', { type: 'oneByOne', duration: 75 });
+                    $('svg#tick-1 path').css('stroke', '#ffffff');
+                } else {
+                    console.log('ola k ase nene');
+                }
+            }
+        });
+
+        $scope.isCompleted = function (level) {
+            return $scope.currentSkill.level >= level;
+        };
+
+        $scope.goBack = function () {
+            $scope.currentSkill = false;
+            $scope.searchSkill = '';
+        };
+    }
+
+    CanIUseController.$inject = ['$scope', 'Families'];
+    angular.module('mmmApp').controller('CanIUseController', CanIUseController);
+}());
+
+(function () {
+    "use strict";
+
+    function SectionsController ($rootScope, $scope, $location, Pages) {
+        $scope.pages = Pages.all();
+        $scope.currentPage = 0;
+        $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
+        $scope.menuActive = false;
+
+        $scope.isCurrentPage = function (page) {
+            return $scope.pages[$scope.currentPage].name === page;
+        };
+
+        $scope.toggleMenu = function () {
+            $scope.menuActive = !$scope.menuActive;
+        };
+
+        $scope.goTo = function (pageNum) {
+            $scope.currentPage = pageNum;
+            $scope.menuActive = !$scope.menuActive;
+            $rootScope.$broadcast("sly:startPage", pageNum);
+        };
+
+        $scope.$on('sly:activePage', function (event, activePage) {
+            $scope.currentPage = activePage;
+            $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
+            $location.url($scope.pages[$scope.currentPage].url);
+            $scope.$apply();
+        });
+        
+        if ($('svg#home-icon').length > 0) {
+            new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
+        }
+    }
+
+    SectionsController.$inject = ['$rootScope', '$scope', '$location', 'Pages'];
+    angular.module('mmmApp').controller('SectionsController', SectionsController);
+}());
 
 (function () {
     "use strict";
