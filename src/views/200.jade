@@ -1,0 +1,16 @@
+doctype html
+html(ng-app="mmmApp" ng-strict-di ng-controller="SectionsController")
+  include head
+  body(resize)
+    include navigation
+    .frame(frameable)
+      ul.pages
+        li.item-0.page
+          include home
+        li.item-1.page
+          include me
+        li.item-2.page
+          include can
+        li.item-3.page
+          include contact
+    script(src="/js/application.js")
