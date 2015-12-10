@@ -5,25 +5,44 @@ var gulp         = require('gulp'),
     stylus       = require('gulp-stylus'),
     concat       = require('gulp-concat'),
     uglify       = require('gulp-uglify'),
+    clean        = require('gulp-clean'),
+    rename       = require('gulp-rename'),
+    gulpIf       = require('gulp-if'),
     jeet         = require('jeet'),
     autoprefixer = require('autoprefixer-stylus'),
     STYL_FILES   = ['assets/styles/**/*.styl'],
     JS_FILES     = ['assets/js/**/*.js'],
     JADE_FILES   = ['src/views/*.jade'],
-    PUBLIC_FILES = ['public/**/*'];
+    PUBLIC_FILES = ['public/**/*'],
+    ENV          = process.env.NODE_ENV || 'development';
+
+gulp.task('clean', function () {
+    gulp.src(['public/*.html', 'public/css', 'public/js'])
+        .pipe(plumber())
+        .pipe(clean())
+});
 
 gulp.task('views', function () {
     gulp.src(JADE_FILES)
         .pipe(plumber())
-        .pipe(jade())
+        .pipe(jade({
+            pretty: ENV === 'development' 
+        }))
         .pipe(gulp.dest('public'));
+});
+
+gulp.task('urlFallback', function () {
+    gulp.src('public/index.html')
+        .pipe(plumber())
+        .pipe(rename('200.html'))
+        .pipe(gulp.dest('public'))
 });
 
 gulp.task('styles', function () {
     gulp.src('assets/styles/application.styl')
         .pipe(plumber())
         .pipe(stylus({
-            //compress: true,
+            compress: ENV === 'production',
             use: [
                   jeet(),
                   autoprefixer()
@@ -43,7 +62,7 @@ gulp.task('js', function () {
     ])
     .pipe(plumber())
     .pipe(concat('application.js'))
-    //.pipe(uglify())
+    .pipe(gulpIf(ENV === 'production', uglify()))
     .pipe(gulp.dest('public/js'));
 });
 
