@@ -31,7 +31,7 @@
                     $pages = $('ul.pages'),
                     $sections = $pages.find('li section'),
                     $body = $('body');
-2
+
                 sly.on('moveEnd', function (eventName) {
                     var pageIndex = sly.rel.activePage;
 
@@ -45,6 +45,10 @@
 
                 $scope.$on('sly:reload', function () {
                     sly.reload();
+                });
+
+                $scope.$on('sly:startPage', function (event, pageNum) {
+                    sly.toStart(pageNum, true);
                 });
 
                 sly.toCenter(Pages.getCurrentPageId($location.url()), true);

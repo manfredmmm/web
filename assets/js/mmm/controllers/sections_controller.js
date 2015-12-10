@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    function SectionsController ($scope, $location, Pages) {
+    function SectionsController ($rootScope, $scope, $location, Pages) {
         $scope.pages = Pages.all();
         $scope.currentPage = 0;
         $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
@@ -16,10 +16,9 @@
         };
 
         $scope.goTo = function (pageNum) {
-            console.log('goto');
-            sly.toStart(pageNum, true);
             $scope.currentPage = pageNum;
             $scope.menuActive = !$scope.menuActive;
+            $rootScope.$broadcast("sly:startPage", pageNum);
         };
 
         $scope.$on('sly:activePage', function (event, activePage) {
@@ -34,6 +33,6 @@
         }
     }
 
-    SectionsController.$inject = ['$scope', '$location', 'Pages'];
+    SectionsController.$inject = ['$rootScope', '$scope', '$location', 'Pages'];
     angular.module('mmmApp').controller('SectionsController', SectionsController);
 }());
