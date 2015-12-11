@@ -12,7 +12,7 @@ var gulp         = require('gulp'),
     autoprefixer = require('autoprefixer-stylus'),
     STYL_FILES   = ['assets/styles/**/*.styl'],
     JS_FILES     = ['assets/js/**/*.js'],
-    JADE_FILES   = ['src/views/*.jade'],
+    JADE_FILES   = ['src/views/index.jade'],
     PUBLIC_FILES = ['public/**/*'],
     ENV          = process.env.NODE_ENV || 'development';
 
