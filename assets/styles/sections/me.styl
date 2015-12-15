@@ -1,11 +1,11 @@
 section.me
   padding 0 60px
   background-color dark-white
-  .image,
+  figure,
   .text
     col(1/2)
     height 100%
-  .image
+  figure
     background-image url("/images/manfred-background.png")
     background-size 35%
     background-position center bottom
@@ -14,7 +14,7 @@ section.me
     display flex
     align-items center
     justify-content center
-    .image
+    figure
       display none
   .content
     margin-top 25%
@@ -27,12 +27,12 @@ section.me
       margin-bottom rem(30px)
 @media mobile-portrait
   section.me
-    .image
+    figure
       display none
     .text
       display inline-block
       col(1)
-      .image
+      figure
         width 100%
         margin-top 15%
         display block
@@ -40,7 +40,7 @@ section.me
         background-size 68%
 @media mobile-landscape
   section.me
-    .image
+    figure
       col(1/4)
       background-size 100%
     .text
