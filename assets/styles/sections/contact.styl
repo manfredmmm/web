@@ -26,10 +26,38 @@ section.contact
     background-color lightless-grey
     transition all .3s ease-in-out 0s
   a.mail
+    font-weight fontWeight-6
     color lightless-grey
     text-decoration none
     display block
-    margin-bottom rem(120px)
+    margin-bottom rem(20px)
+  p
+    font-size fontSize-small
+    font-weight fontWeight-5
+    color lightless-grey
+    margin-bottom rem(50px)
+    a
+      margin-left rem(5px)
+      color lightless-grey
+      text-decoration none
+      position relative
+      &:after
+        content ''
+        position absolute
+        top 100%
+        left 0
+        width 100%
+        height 1px
+        background dark-grey
+        opacity 0
+        transition opacity .3s, transform .3s
+        transition-property opacity, transform
+        transition-duration .3s, .3s
+        transform translateY(10px)
+      &:hover:after,
+      &:focus:after
+        opacity 1
+        transform translateY(0px)
 ul.social
   display inline-block
   li
