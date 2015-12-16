@@ -7,25 +7,31 @@
         var pages = [{
               name: 'home',
               url: '',
-              binary: '00',
+              binary: '000',
               title: 'Home',
               style: 'white'
             }, {
               name: 'me',
               url: 'biography',
-              binary: '01',
+              binary: '001',
               title: 'Biography',
+              style: 'black'
+            }, {
+              name: 'work',
+              url: 'experience',
+              binary: '010',
+              title: 'Experience',
               style: 'black'
             }, {
               name: 'can',
               url: 'can-i-use',
-              binary: '10',
+              binary: '011',
               title: 'Can I use',
               style: 'black'
             }, {
               name: 'contact',
               url: 'contact',
-              binary: '11',
+              binary: '100',
               title: "Let's talk",
               style: 'white'
         }];

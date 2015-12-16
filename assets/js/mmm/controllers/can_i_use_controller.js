@@ -10,18 +10,18 @@
         };
 
         // TODO: falta fer que es dibuixin els ticks un per un
-        $scope.$watch('currentSkill', function (newValue, oldValue) {
-            console.log('current skill: ' + $scope.currentSkill.name);
-            if (newValue !== false) {
-                $('svg#tick-1 path').css('stroke', '#000');
-                if (($('svg#tick-1').length) > 0) {
-                    //new Vivus('tick-1', { type: 'oneByOne', duration: 75 });
-                    $('svg#tick-1 path').css('stroke', '#ffffff');
-                } else {
-                    console.log('ola k ase nene');
-                }
-            }
-        });
+        //$scope.$watch('currentSkill', function (newValue, oldValue) {
+        //    console.log('current skill: ' + $scope.currentSkill.name);
+        //    if (newValue !== false) {
+        //        $('svg#tick-1 path').css('stroke', '#000');
+        //        if (($('svg#tick-1').length) > 0) {
+        //            //new Vivus('tick-1', { type: 'oneByOne', duration: 75 });
+        //            $('svg#tick-1 path').css('stroke', '#ffffff');
+        //        } else {
+        //            console.log('ola k ase nene');
+        //        }
+        //    }
+        //});
 
         $scope.isCompleted = function (level) {
             return $scope.currentSkill.level >= level;
