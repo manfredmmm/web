@@ -11,3 +11,28 @@ section.work
     margin-bottom rem(10px)
   p.description
     margin-bottom rem(30px)
+  span.com,
+  a
+    text-decoration none
+    position relative
+    &:after
+      content ''
+      position absolute
+      top 100%
+      left 0
+      width 100%
+      height 2px
+      background m-grey
+      opacity 0
+      transition opacity .3s, transform .3s
+      transition-property opacity, transform
+      transition-duration .3s, .3s
+      transform translateY(5px)
+    &:hover:after,
+    &:focus:after
+      opacity 1
+      transform translateY(0px)
+  span:not(.com)
+    margin-left 5px
+    display inline-block
+
