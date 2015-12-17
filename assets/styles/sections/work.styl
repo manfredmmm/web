@@ -1,7 +1,9 @@
 section.work
   background-color dark-white
-  .u-centered-content
-    height 100%
+  display flex
+  align-items center
+  justify-content center
+  height 100%
   .text
     center(35%)
   p.sub-section
@@ -37,4 +39,12 @@ section.work
   span:not(.com)
     margin-left 5px
     display inline-block
-
+@media mobile
+  section.work
+    height auto
+    min-height calc(100vh - 12px)
+    .text
+      margin-top rem(50px)
+      center(70%)
+      height auto
+      margin-bottom rem(25px)

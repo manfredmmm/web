@@ -41274,6 +41274,7 @@ $provide.value("$locale", {
 
         $scope.showLevel = function (skill) {
             $scope.currentSkill = skill;
+            $('body').scrollTop(0);
         };
 
         // TODO: falta fer que es dibuixin els ticks un per un
