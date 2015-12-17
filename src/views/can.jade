@@ -1,30 +1,30 @@
 section.can
   .skills-table(ng-controller="CanIUseController")
     .header.tac
-      label Can I use
-      input(ng-model="searchSkill" placeholder="skill (ask me for html or js)" align="middle")
-      span.question ?
+      label.fs-largest Can I use
+      input.fs-small(ng-model="searchSkill" placeholder="skill (ask me for html or js)" align="middle")
+      span.fs-largest ?
     .content
       .all-families(ng-hide="currentSkill")
         ul
           li.family(ng-repeat="family in families | filter:searchSkill")
             h4.ttu {{ family.name }}
-            ul.skills
+            ul.skills.fs-small
               li(ng-repeat="skill in family.skills")
                 a(ng-click="showLevel(skill)") {{ skill.name }} (lvl {{ skill.level }})
-        p.hint * This table may be updated. Each day we should go to sleep having learned something new.
+        p.hint.fs-smaller.fw-1 * This table may be updated. Each day we should go to sleep having learned something new.
       .skill-level(ng-if="currentSkill")
         a.back(ng-click="goBack()")
           i.fa.fa-angle-left
-          span back
+          span.fs-base back
         .skill-content
           h5.ttu.tac
             | {{ currentSkill.name }}
-            span.level level
-            span.number {{ currentSkill.level }}
+            span.level.fs-smallest level
+            span.number.fs-largest {{ currentSkill.level }}
           ol.levels
             li.level(ng-repeat="level in [1,2,3,4,5,6,7,8,9,10]" ng-class="{ uncompleted: !isCompleted(level) }")
               svg(ng-show="currentSkill" id="tick-{{ level }}" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 250 250" enable-background="new 0 0 250 250" preserveAspectRatio="xMinYMin meet")
                 include completed
-              span.ttu.tac lvl {{ level }}
-        p.hint * All levels are approximate because I don't know everything.
+              span.ttu.tac.fs-smallest lvl {{ level }}
+        p.hint.fs-smaller * All levels are approximate because I don't know everything.

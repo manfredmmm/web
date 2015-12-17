@@ -3,47 +3,46 @@ section.me
   background-color dark-white
   figure,
   .text
-    col(1/2)
     height 100%
   figure
     background-image url("/images/manfred-background.png")
-    background-size 35%
-    background-position center bottom
+    background-size 70%
+    background-position right bottom
     background-repeat no-repeat
+    col(1/4)
   .text
     display flex
     align-items center
     justify-content center
+    col(3/4)
     figure
       display none
   .content
-    margin-top 25%
-@media mobile
+    width 75%
+@media mobile-tablet
   section.me
-    padding 0 45px
-    .content
-      margin-top 20%
+    padding 0 50px
     h2
       margin-bottom rem(30px)
-@media mobile-portrait
+@media mobile-tablet-portrait
   section.me
     figure
       display none
+    .content
+      margin-top 20%
     .text
       display inline-block
-      col(1)
+      width 100% !important
       figure
         width 100%
         margin-top 15%
         display block
         background-position center top
         background-size 68%
-@media mobile-landscape
+@media mobile-tablet-landscape
   section.me
     figure
       col(1/4)
       background-size 80%
     .text
       col(3/4)
-    .content
-      margin-top 0
