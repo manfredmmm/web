@@ -17,7 +17,9 @@
 
         $scope.goTo = function (pageNum) {
             $scope.currentPage = pageNum;
-            $scope.menuActive = !$scope.menuActive;
+            if ($scope.menuActive === true) {
+                $scope.menuActive = !$scope.menuActive;
+            }
             $rootScope.$broadcast("sly:startPage", pageNum);
         };
 

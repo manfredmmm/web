@@ -38,6 +38,12 @@ section.work
   span:not(.com)
     margin-left 5px
     display inline-block
+@media mobile
+  section.work
+    h4
+      margin-bottom rem(7px)
+    p.description
+      margin-bottom rem(20px)
 @media mobile-tablet
   section.work
     height auto
@@ -47,6 +53,15 @@ section.work
       center(70%)
       height auto
       margin-bottom rem(25px)
+@media mobile-landscape
+  section.work
+    .text
+      center(80%)
+      margin-top rem(40px)
+    h2
+      margin-bottom rem(20px)
+    p.sub-section
+      margin-bottom rem(5px)
 @media tablet-portrait
   section.work
     .u-centered-content

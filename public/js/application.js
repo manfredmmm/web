@@ -41324,7 +41324,9 @@ $provide.value("$locale", {
 
         $scope.goTo = function (pageNum) {
             $scope.currentPage = pageNum;
-            $scope.menuActive = !$scope.menuActive;
+            if ($scope.menuActive === true) {
+                $scope.menuActive = !$scope.menuActive;
+            }
             $rootScope.$broadcast("sly:startPage", pageNum);
         };
 
@@ -41552,12 +41554,6 @@ $provide.value("$locale", {
                     level: 10
                 }, {
                     name: "photoshop",
-                    level: 10
-                }]
-            }, {
-                name: "3D library",
-                skills: [{
-                    name: "three.js",
                     level: 10
                 }]
             }, {

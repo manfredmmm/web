@@ -125,12 +125,6 @@
                     level: 10
                 }]
             }, {
-                name: "3D library",
-                skills: [{
-                    name: "three.js",
-                    level: 10
-                }]
-            }, {
                 name: "source control",
                 skills: [{
                     name: "git",
