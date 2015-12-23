@@ -99,7 +99,7 @@ section.can
     height auto
     min-height calc(100vh - 12px)
     .skills-table
-      margin-top 15%
+      margin-top 10%
       min-width 75%
       center(100%)
     .header
@@ -107,8 +107,8 @@ section.can
       padding rem(15px)
     .content
       height auto
-      margin-bottom 25px
-      padding 10px 10px 40px 10px
+      margin-bottom 5px
+      padding 5px 5px 20px 5px
     label,
     input,
     span.question
@@ -126,10 +126,17 @@ section.can
       cf()
     li.family
       col(1/2, uncycle: 3, cycle: 2)
+      margin-right 1%
+      margin-bottom 5px
+      font-size fontSize-smaller
     ol.levels
       margin-bottom 0
     ul
       cf()
+    p.hint
+      font-size fontSize-smallest
+      right 5px
+      bottom 5px
 @media mobile-portrait
   section.can
     .skills-table
