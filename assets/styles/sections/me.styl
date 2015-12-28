@@ -20,6 +20,26 @@ section.me
       display none
   .content
     width 90%
+  a
+    text-decoration none
+    position relative
+    &:after
+      content ''
+      position absolute
+      top 100%
+      left 0
+      width 100%
+      height 1px
+      background dark-grey
+      opacity 0
+      transition opacity .3s, transform .3s
+      transition-property opacity, transform
+      transition-duration .3s, .3s
+      transform translateY(10px)
+    &:hover:after,
+    &:focus:after
+      opacity 1
+      transform translateY(0px)
 @media mobile-tablet
   section.me
     padding 0 50px

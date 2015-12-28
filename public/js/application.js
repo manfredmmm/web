@@ -41440,19 +41440,19 @@ $provide.value("$locale", {
                 name: "html",
                 skills: [{
                     name: "html5",
-                    level: 5
+                    level: 6
                 }, {
                     name: "jade",
                     level: 10
                 }, {
                     name: "haml",
-                    level: 10
+                    level: 8
                 }, {
                     name: "slim",
                     level: 10
                 }, {
                     name: "seo friendly",
-                    level: 10
+                    level: 7
                 }]
             }, {
                 name: "javascript",
@@ -41461,13 +41461,13 @@ $provide.value("$locale", {
                     level: 6
                 }, {
                     name: "angularjs",
-                    level: 10
+                    level: 8
                 }, {
                     name: "jquery",
-                    level: 10
+                    level: 9
                 }, {
                     name: "nodejs",
-                    level: 10
+                    level: 5
                 }, {
                     name: "AJAX",
                     level: 8
@@ -41494,7 +41494,7 @@ $provide.value("$locale", {
                     level: 9
                 }, {
                     name: "animations",
-                    level: 7
+                    level: 8
                 }, {
                     name: "responsive layouts",
                     level: 8
@@ -41521,40 +41521,40 @@ $provide.value("$locale", {
                 name: "frameworks",
                 skills: [{
                     name: "ruby on rails",
-                    level: 10
+                    level: 6
                 }, {
                     name: "sinatra",
-                    level: 10
+                    level: 6
                 }]
             }, {
                 name: "web design",
                 skills: [{
                     name: "responsive design",
-                    level: 10
+                    level: 7
                 }, {
                     name: "ux-ui",
-                    level: 10
+                    level: 6
                 }, {
                     name: "web design",
-                    level: 10
+                    level: 6
                 }]
             }, {
                 name: "Front end frameworks",
                 skills: [{
                     name: "twitter bootstrap",
-                    level: 10
+                    level: 8
                 }, {
                     name: "foundation",
-                    level: 10
+                    level: 9
                 }]
             }, {
                 name: "Design tools",
                 skills: [{
                     name: "illustrator",
-                    level: 10
+                    level: 5
                 }, {
                     name: "photoshop",
-                    level: 10
+                    level: 7
                 }]
             }, {
                 name: "source control",
