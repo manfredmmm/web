@@ -40,7 +40,10 @@ gulp.task('urlFallback', function () {
 });
 
 gulp.task('styles', function () {
-    gulp.src('assets/styles/application.styl')
+    gulp.src([
+            'node_modules/font-awesome/css/font-awesome.css',
+            'assets/styles/application.styl'
+        ])
         .pipe(plumber())
         .pipe(stylus({
             compress: ENV === 'production',
@@ -49,6 +52,7 @@ gulp.task('styles', function () {
                   autoprefixer()
                 ]
         }))
+        .pipe(concat('application.css'))
         .pipe(gulp.dest('public/css'));
 });
 
