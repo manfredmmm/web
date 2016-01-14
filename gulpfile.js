@@ -10,17 +10,37 @@ var gulp         = require('gulp'),
     gulpIf       = require('gulp-if'),
     jeet         = require('jeet'),
     autoprefixer = require('autoprefixer-stylus'),
-    STYL_FILES   = ['assets/styles/**/*.styl'],
-    JS_FILES     = ['assets/js/**/*.js'],
-    //JADE_FILES   = ['src/views/index.jade'],
+    STYL_FILES   = ['src/styles/**/*.styl'],
+    JS_FILES     = ['src/js/**/*.js'],
     JADE_FILES   = ['src/views/**/*.jade'],
     PUBLIC_FILES = ['public/**/*'],
     ENV          = process.env.NODE_ENV || 'development';
 
 gulp.task('clean', function () {
-    gulp.src(['public/*.html', 'public/css', 'public/js'])
+    gulp.src(['public/*.html',
+              'public/css', 
+              'public/js', 
+              'public/*.html', 
+              'public/CNAME', 
+              'public/videos', 
+              'public/pdfs', 
+              'public/images'
+        ])
         .pipe(plumber())
         .pipe(clean())
+});
+
+gulp.task('public', function () {
+    gulp.src(['src/images/**/*'])
+        .pipe(gulp.dest('public/images'));
+    gulp.src(['src/pdfs/**/*'])
+        .pipe(gulp.dest('public/pdfs'));
+    gulp.src(['src/videos/**/*'])
+        .pipe(gulp.dest('public/videos'));
+    gulp.src(['src/fonts/**/*'])
+        .pipe(gulp.dest('public/fonts'));
+    gulp.src(['src/CNAME'])
+        .pipe(gulp.dest('public/CNAME'));
 });
 
 gulp.task('views', function () {
@@ -42,7 +62,7 @@ gulp.task('urlFallback', function () {
 gulp.task('styles', function () {
     gulp.src([
             'node_modules/font-awesome/css/font-awesome.css',
-            'assets/styles/application.styl'
+            'src/styles/application.styl'
         ])
         .pipe(plumber())
         .pipe(stylus({
@@ -62,8 +82,8 @@ gulp.task('js', function () {
         'bower_components/sly/dist/sly.js',
         'node_modules/vivus/dist/vivus.js',
         'node_modules/angular/angular.js',
-        'assets/js/mmm/**/*.js',
-        'assets/js/application.js'
+        'src/js/mmm/**/*.js',
+        'src/js/application.js'
     ])
     .pipe(plumber())
     .pipe(concat('application.js'))
@@ -91,5 +111,5 @@ gulp.task('reload', function () {
         .pipe(connect.reload());
 });
 
-gulp.task('build', ['views', 'styles', 'js']);
+gulp.task('build', ['views', 'styles', 'js', 'public']);
 gulp.task('default', ['build', 'watch', 'connect']);
