@@ -21,7 +21,6 @@ gulp.task('clean', function () {
               'public/css', 
               'public/js', 
               'public/*.html', 
-              'public/CNAME', 
               'public/videos', 
               'public/pdfs', 
               'public/images'
@@ -39,8 +38,6 @@ gulp.task('public', function () {
         .pipe(gulp.dest('public/videos'));
     gulp.src(['src/fonts/**/*'])
         .pipe(gulp.dest('public/fonts'));
-    gulp.src(['src/CNAME'])
-        .pipe(gulp.dest('public/CNAME'));
 });
 
 gulp.task('views', function () {
@@ -82,8 +79,7 @@ gulp.task('js', function () {
         'bower_components/sly/dist/sly.js',
         'node_modules/vivus/dist/vivus.js',
         'node_modules/angular/angular.js',
-        'src/js/mmm/**/*.js',
-        'src/js/application.js'
+        'src/js/mmm/**/*.js'
     ])
     .pipe(plumber())
     .pipe(concat('application.js'))

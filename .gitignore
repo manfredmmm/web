@@ -1,4 +1,10 @@
 node_modules
-public
+public/css
+public/js
+public/*.html
+public/fonts
+public/images
+public/videos
+public/pdfs
 .DS_Store
 bower_components
