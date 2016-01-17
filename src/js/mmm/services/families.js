@@ -19,8 +19,8 @@
                     name: "slim",
                     level: 10
                 }, {
-                    name: "seo friendly",
-                    level: 7
+                    name: "seo on-page",
+                    level: 8
                 }]
             }, {
                 name: "javascript",
