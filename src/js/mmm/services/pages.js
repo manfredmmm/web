@@ -30,7 +30,7 @@
               style: 'black'
             }, {
               name: 'contact',
-              url: 'contact',
+              url: 'contact-me',
               binary: '100',
               title: "Let's talk",
               style: 'white'
