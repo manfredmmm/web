@@ -21,6 +21,9 @@
                 }, {
                     name: "seo on-page",
                     level: 8
+                }, {
+                    name: "handlebars",
+                    level: 7
                 }]
             }, {
                 name: "javascript",
@@ -30,6 +33,9 @@
                 }, {
                     name: "angularjs",
                     level: 8
+                }, {
+                    name: "react",
+                    level: 6
                 }, {
                     name: "jquery",
                     level: 9
@@ -44,7 +50,7 @@
                     level: 9
                 }, {
                     name: "coffeescript",
-                    level: 6
+                    level: 7
                 }]
             }, {
                 name: "css",
@@ -73,6 +79,9 @@
                     name: "gulp",
                     level: 8
                 }, {
+                    name: "webpack",
+                    level: 6
+                }, {
                     name: "grunt",
                     level: 6
                 }]
@@ -83,6 +92,9 @@
                     level: 9
                 }, {
                     name: "bower",
+                    level: 8
+                }, {
+                    name: "yarn",
                     level: 8
                 }]
             }, {
@@ -128,6 +140,9 @@
                 name: "source control",
                 skills: [{
                     name: "git",
+                    level: 7
+                }, {
+                    name: "mercurial",
                     level: 7
                 }]
         }];
