@@ -26,6 +26,27 @@
                     level: 7
                 }]
             }, {
+                name: "css",
+                skills: [{
+                    name: "css3",
+                    level: 9
+                }, {
+                    name: "sass/scss",
+                    level: 9
+                }, {
+                    name: "stylus",
+                    level: 9
+                }, {
+                    name: "less",
+                    level: 9
+                }, {
+                    name: "animations",
+                    level: 8
+                }, {
+                    name: "responsive layouts",
+                    level: 8
+                }]
+            }, {
                 name: "javascript",
                 skills: [{
                     name: "native",
@@ -51,27 +72,12 @@
                 }, {
                     name: "coffeescript",
                     level: 7
-                }]
-            }, {
-                name: "css",
-                skills: [{
-                    name: "css3",
-                    level: 9
                 }, {
-                    name: "sass/scss",
-                    level: 9
+                    name: "threejs",
+                    level: 5
                 }, {
-                    name: "stylus",
-                    level: 9
-                }, {
-                    name: "less",
-                    level: 9
-                }, {
-                    name: "animations",
-                    level: 8
-                }, {
-                    name: "responsive layouts",
-                    level: 8
+                    name: "GSAP",
+                    level: 7
                 }]
             }, {
                 name: "js tasks runner",
