@@ -8,7 +8,7 @@
                 name: "html",
                 skills: [{
                     name: "html5",
-                    level: 6
+                    level: 8
                 }, {
                     name: "jade",
                     level: 10
@@ -23,7 +23,7 @@
                     level: 8
                 }, {
                     name: "handlebars",
-                    level: 7
+                    level: 8
                 }]
             }, {
                 name: "css",
@@ -41,21 +41,15 @@
                     level: 9
                 }, {
                     name: "animations",
-                    level: 8
+                    level: 9
                 }, {
                     name: "responsive layouts",
-                    level: 8
+                    level: 9
                 }]
             }, {
                 name: "javascript",
                 skills: [{
                     name: "native",
-                    level: 6
-                }, {
-                    name: "angularjs",
-                    level: 8
-                }, {
-                    name: "react",
                     level: 6
                 }, {
                     name: "jquery",
@@ -80,16 +74,37 @@
                     level: 7
                 }]
             }, {
+                name: "javascript frameworks",
+                skills: [{
+                    name: "angularjs",
+                    level: 7
+                }, {
+                    name: "backbone",
+                    level: 6
+                }, {
+                    name: "react",
+                    level: 6
+                }]
+            }, {
                 name: "js tasks runner",
                 skills: [{
                     name: "gulp",
                     level: 8
                 }, {
                     name: "webpack",
-                    level: 6
+                    level: 8
                 }, {
                     name: "grunt",
                     level: 6
+                }]
+            }, {
+                name: "fe frameworks",
+                skills: [{
+                    name: "twitter bootstrap",
+                    level: 8
+                }, {
+                    name: "foundation",
+                    level: 9
                 }]
             }, {
                 name: "js package manager",
@@ -104,7 +119,7 @@
                     level: 8
                 }]
             }, {
-                name: "frameworks",
+                name: "ruby frameworks",
                 skills: [{
                     name: "ruby on rails",
                     level: 6
@@ -125,16 +140,7 @@
                     level: 6
                 }]
             }, {
-                name: "Front end frameworks",
-                skills: [{
-                    name: "twitter bootstrap",
-                    level: 8
-                }, {
-                    name: "foundation",
-                    level: 9
-                }]
-            }, {
-                name: "Design tools",
+                name: "design tools",
                 skills: [{
                     name: "illustrator",
                     level: 5
