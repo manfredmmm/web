@@ -10,7 +10,7 @@
                     name: "html5",
                     level: 8
                 }, {
-                    name: "jade",
+                    name: "pug",
                     level: 10
                 }, {
                     name: "haml",
@@ -49,8 +49,8 @@
             }, {
                 name: "javascript",
                 skills: [{
-                    name: "native",
-                    level: 6
+                    name: "vanilla",
+                    level: 7
                 }, {
                     name: "jquery",
                     level: 9
@@ -68,10 +68,10 @@
                     level: 7
                 }, {
                     name: "threejs",
-                    level: 5
+                    level: 6
                 }, {
                     name: "GSAP",
-                    level: 7
+                    level: 8
                 }]
             }, {
                 name: "javascript frameworks",
@@ -83,7 +83,7 @@
                     level: 6
                 }, {
                     name: "react",
-                    level: 6
+                    level: 7
                 }]
             }, {
                 name: "js tasks runner",
@@ -92,7 +92,7 @@
                     level: 8
                 }, {
                     name: "webpack",
-                    level: 8
+                    level: 9
                 }, {
                     name: "grunt",
                     level: 6
@@ -116,7 +116,7 @@
                     level: 8
                 }, {
                     name: "yarn",
-                    level: 8
+                    level: 9
                 }]
             }, {
                 name: "ruby frameworks",
@@ -133,7 +133,7 @@
                     name: "responsive design",
                     level: 7
                 }, {
-                    name: "ux-ui",
+                    name: "ux/ui",
                     level: 6
                 }, {
                     name: "web design",
@@ -152,7 +152,7 @@
                 name: "source control",
                 skills: [{
                     name: "git",
-                    level: 7
+                    level: 8
                 }, {
                     name: "mercurial",
                     level: 7
