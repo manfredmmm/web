@@ -6,6 +6,7 @@
         $scope.currentPage = 0;
         $scope.currentPageStyle = $scope.pages[$scope.currentPage].style;
         $scope.menuActive = false;
+        $scope.hideLoader = true;
 
         $scope.isCurrentPage = function (page) {
             return $scope.pages[$scope.currentPage].name === page;
@@ -29,7 +30,7 @@
             $location.url($scope.pages[$scope.currentPage].url);
             $scope.$apply();
         });
-        
+
         if ($('svg#home-icon').length > 0) {
             new Vivus('home-icon', { type: 'oneByOne', duration: 75 });
         }

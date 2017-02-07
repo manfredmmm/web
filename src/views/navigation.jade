@@ -1,15 +1,14 @@
-.nav-components(ng-cloak)
-  .ui-elements
-    a.home.z-index10(ng-click="goTo(0)" ng-class="currentPageStyle" ng-hide="isCurrentPage('home') || menuActive")
-    a.nav-toggle.z-index10(ng-click="toggleMenu()" ng-class="{ 'white': currentPageStyle === 'white', 'black': currentPageStyle === 'black', 'active': menuActive }")
-      span
-    a.nav.nav-previous.z-index10(ng-class="currentPageStyle" ng-hide="isCurrentPage('home') || menuActive")
-      h6 {{ pages[currentPage-1].binary }} - {{ pages[currentPage-1].title }}
-    a.nav.nav-next.z-index10(ng-class="currentPageStyle" ng-hide="isCurrentPage('contact') || menuActive")
-      h6 {{ pages[currentPage+1].binary }} - {{ pages[currentPage+1].title }}
-  nav.options.z-index9(ng-class="{ active: menuActive }")
-    ul.nav
-      li(ng-repeat="page in pages")
-        a(ng-click="goTo($index)" ng-class="{ active: isCurrentPage(page.name) }")
-          span.binary.fs-largest {{ page.binary }}
-          span.ttu.fs-larger {{ page.title }}
+.ui-elements
+  a.home.z-index10(ng-click="goTo(0)" ng-class="currentPageStyle" ng-hide="isCurrentPage('home') || menuActive")
+  a.nav-toggle.z-index10(ng-click="toggleMenu()" ng-class="{ 'white': currentPageStyle === 'white', 'black': currentPageStyle === 'black', 'active': menuActive }")
+    span
+  a.nav.nav-previous.z-index10(ng-class="currentPageStyle" ng-hide="isCurrentPage('home') || menuActive")
+    h6 {{ pages[currentPage-1].binary }} - {{ pages[currentPage-1].title }}
+  a.nav.nav-next.z-index10(ng-class="currentPageStyle" ng-hide="isCurrentPage('contact') || menuActive")
+    h6 {{ pages[currentPage+1].binary }} - {{ pages[currentPage+1].title }}
+nav.options.z-index9(ng-class="{ active: menuActive }")
+  ul.nav
+    li(ng-repeat="page in pages")
+      a(ng-click="goTo($index)" ng-class="{ active: isCurrentPage(page.name) }")
+        span.binary.fs-largest {{ page.binary }}
+        span.ttu.fs-larger {{ page.title }}

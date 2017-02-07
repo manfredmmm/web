@@ -2,8 +2,9 @@ doctype html
 html(ng-app="mmmApp" ng-strict-di ng-controller="SectionsController" lang="en")
   include head
   body(resize)
-    include navigation
-    main.frame(frameable)
+    .nav-components(ng-cloak)
+      include navigation
+    main.frame(frameable ng-cloak)
       ul.pages
         li.item-0.page
           include home
@@ -15,6 +16,9 @@ html(ng-app="mmmApp" ng-strict-di ng-controller="SectionsController" lang="en")
           include can
         li.item-4.page
           include contact
+    section.loading(ng-hide="hideLoader")
+      .u-centered-content
+        .loader
     footer
       link(rel="stylesheet" href="/css/application.css")
       script(async src="/js/application.js")
