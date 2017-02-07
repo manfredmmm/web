@@ -1,7 +1,6 @@
 section.home
   background-color darkest-grey
   overflow hidden
-  opacity 1
   background url(/videos/mmm.gif) no-repeat center center fixed
   background-size cover
   animation fadeIn .5s .2s
@@ -15,12 +14,9 @@ section.home
   h2
     font-size fontSize-small
     margin-bottom 0
-[ng-cloak].loading
-  display block !important
 .loading
-  display none
-  background-color m-white
   opacity 1
+  background-color m-white
   .u-centered-content
     width 100%
     height 100%
@@ -28,3 +24,5 @@ section.home
   section.home
     svg
       center(45%)
+[ng-cloak]
+  display none !important
