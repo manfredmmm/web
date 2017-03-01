@@ -28,6 +28,9 @@
             }, {
                 name: "css",
                 skills: [{
+                    name: "postcss",
+                    level: 9
+                }, {
                     name: "css3",
                     level: 9
                 }, {
@@ -50,6 +53,9 @@
                 name: "javascript",
                 skills: [{
                     name: "vanilla",
+                    level: 7
+                }, {
+                    name: "ES6",
                     level: 7
                 }, {
                     name: "jquery",
@@ -79,7 +85,7 @@
                     name: "angularjs",
                     level: 7
                 }, {
-                    name: "backbone",
+                    name: "backbonejs",
                     level: 6
                 }, {
                     name: "react",
@@ -109,14 +115,14 @@
             }, {
                 name: "js package manager",
                 skills: [{
+                    name: "yarn",
+                    level: 9
+                },  {
                     name: "npm",
                     level: 9
                 }, {
                     name: "bower",
                     level: 8
-                }, {
-                    name: "yarn",
-                    level: 9
                 }]
             }, {
                 name: "ruby frameworks",
